@@ -29,7 +29,7 @@ services:
     container_name: php_apache_container
     restart: always
     volumes:
-      - ./:/var/www/html
+      - ./projeto/:/var/www/html
     ports:
       - '80:80'
 
