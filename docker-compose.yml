@@ -24,5 +24,14 @@ services:
       PMA_USER: user
       PMA_PASSWORD: user
 
+  web:
+    build: .
+    container_name: php_apache_container
+    restart: always
+    volumes:
+      - ./:/var/www/html
+    ports:
+      - '80:80'
+
 volumes:
   db_data:

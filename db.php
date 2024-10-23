@@ -1,10 +1,10 @@
 <?php
 // db.php
 
-$host = 'localhost'; // Endereço do servidor MySQL
+$host = 'db'; // Nome do serviço do MySQL
 $db = 'censopcd'; // Nome do banco de dados
-$user = 'root'; // Usuário do MySQL
-$pass = ''; // Senha do MySQL (se houver)
+$user = 'user'; // Usuário do MySQL
+$pass = 'user'; // Senha do MySQL
 
 // Estabelecendo a conexão
 $conn = new mysqli($host, $user, $pass, $db);
