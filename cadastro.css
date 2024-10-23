@@ -1,0 +1,255 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Cor de fundo do tema claro */
+    color: #333; /* Cor do texto do tema claro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+    background-color: #121212; /* Cor de fundo do tema escuro */
+    color: white; /* Cor do texto do tema escuro */
+}
+
+.navbar-light {
+    background-color: #f8f9fa; /* Cor da navbar no tema claro */
+    font-family: Arial, sans-serif;
+}
+
+.navbar-dark {
+    background-color: #121212; /* Cor da navbar no tema escuro */
+    font-family: Arial, sans-serif;
+}
+
+.navbar-dark .navbar-brand {
+    color: #696969ef !important; /* Cor do texto da marca no tema escuro */
+}
+
+.navbar-dark .dropdown-toggle {
+    color: white; /* Cor do texto do botão "Tema" no modo escuro */
+}
+
+.navbar-dark .dropdown-item {
+    color: white !important; /* Cor das opções do dropdown no modo escuro */
+}
+
+.navbar-light .navbar-brand {
+    color: #333; /* Cor do texto da marca no tema claro */
+}
+
+.navbar-light .dropdown-item:hover {
+    background-color: #d6d6d6 !important; /* Cor do item do dropdown ao passar o mouse no modo escuro */
+}
+
+/* cor botao drop down*/
+
+.navbar-dark .dropdown-menu {
+    background-color: #121212; /* Cor de fundo do dropdown no modo escuro */
+    border: 1px solid #333; /* Cor da borda do dropdown */
+}
+
+.navbar-dark .dropdown-item {
+    color: #f4f4f4; /* Cor do texto do item do dropdown no modo escuro */
+}
+
+.navbar-dark .dropdown-item:hover {
+    background-color: #252525; /* Cor do item do dropdown ao passar o mouse no modo escuro */
+}
+
+/* Adiciona uma classe ao botão de tema quando o tema escuro está ativo */
+
+.navbar-dark .dropdown-toggle {
+    color: white !important; /* Cor do texto do botão do dropdown */
+}
+
+.cadastro-container {
+    background: white; /* Fundo do container no tema claro */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 30px #38B1FF;
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.cadastro-container.dark-mode {
+    background: #121212; /* Fundo do container no tema escuro */
+}
+
+.logo-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.logo {
+    max-width: 100px;
+}
+
+/* Estilos dos campos de entrada */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0 20px;
+    border: 1px solid #ccc; /* Borda no tema claro */
+    border-radius: 6px;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+input[type="text"].dark-mode,
+input[type="email"].dark-mode,
+input[type="password"].dark-mode,
+input[type="date"].dark-mode {
+    background-color: #333; /* Fundo dos inputs no tema escuro */
+    color: white; /* Cor do texto dos inputs no tema escuro */
+    border: 1px solid #888; /* Borda dos inputs no tema escuro */
+}
+
+input[type="submit"] {
+    background-color: #38B1FF; /* Cor do botão no tema claro */
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"].dark-mode {
+    background-color: #007BFF; /* Cor do botão no tema escuro */
+    color: white;
+}
+
+input[type="submit"]:hover {
+    background-color: #007BFF; /* Cor do botão no hover no tema claro */
+}
+
+input[type="submit"].dark-mode:hover {
+    background-color: #0056b3; /* Cor do botão no hover no tema escuro */
+}
+
+p {
+    color: #333; /* Cor do texto no tema claro */
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+p a {
+    color: #38B1FF; /* Cor do link no tema claro */
+    text-decoration: none;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+.erro-mensagem {
+    color: red;
+    margin-top: 10px;
+}
+
+.btncadastro {
+    margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+    .cadastro-container {
+        padding: 20px;
+    }
+
+    .logo {
+        max-width: 80px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+}
+
+/* Animação de borda ao redor da logo */
+.border-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.border-animation span {
+    position: absolute;
+    display: block;
+}
+
+.border-animation span:nth-child(1) {
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #38B1FF);
+    animation: border-anim1 1s linear infinite;
+}
+
+@keyframes border-anim1 {
+    0% { left: -100%; }
+    50%, 100% { left: 100%; }
+}
+
+.border-animation span:nth-child(2) {
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, #38B1FF);
+    animation: border-anim2 1s linear infinite;
+    animation-delay: .30s;
+}
+
+@keyframes border-anim2 {
+    0% { top: -100%; }
+    50%, 100% { top: 100%; }
+}
+
+.border-animation span:nth-child(3) {
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg, transparent, #38B1FF);
+    animation: border-anim3 1s linear infinite;
+    animation-delay: .10s;
+}
+
+@keyframes border-anim3 {
+    0% { right: -100%; }
+    50%, 100% { right: 100%; }
+}
+
+.border-animation span:nth-child(4) {
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg, transparent, #38B1FF);
+    animation: border-anim4 1s linear infinite;
+    animation-delay: .80s;
+}
+
+@keyframes border-anim4 {
+    0% { bottom: -100%; }
+    50%, 100% { bottom: 100%; }
+}

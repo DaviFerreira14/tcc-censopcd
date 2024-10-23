@@ -1,0 +1,306 @@
+/* ============================================
+   Global Styles
+   - Configurações gerais de fonte, alinhamento e margens
+   ============================================ */
+   body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Cor de fundo para tema claro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transição suave para as mudanças de tema */
+}
+
+/* ============================================
+   Login Container
+   - Estilos do contêiner principal de login
+   ============================================ */
+.login-container {
+    background-color: white; /* Cor de fundo para tema claro */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 30px #38B1FF;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transição suave para a mudança de cor de fundo */
+}
+
+/* ============================================
+   Logo Wrapper and Animation
+   - Estilos e animações para a logo e borda
+   ============================================ */
+.logo-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.logo {
+    max-width: 100px;
+}
+
+/* Animação de borda ao redor da logo */
+.border-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.border-animation span {
+    position: absolute;
+    display: block;
+}
+
+/* Primeira animação (cima para a direita) */
+.border-animation span:nth-child(1) {
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #38B1FF);
+    animation: border-anim1 1s linear infinite;
+}
+
+@keyframes border-anim1 {
+    0% { left: -100%; }
+    50%, 100% { left: 100%; }
+}
+
+/* Segunda animação (direita para baixo) */
+.border-animation span:nth-child(2) {
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, #38B1FF);
+    animation: border-anim2 1s linear infinite;
+    animation-delay: .30s;
+}
+
+@keyframes border-anim2 {
+    0% { top: -100%; }
+    50%, 100% { top: 100%; }
+}
+
+/* Terceira animação (baixo para a esquerda) */
+.border-animation span:nth-child(3) {
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg, transparent, #38B1FF);
+    animation: border-anim3 1s linear infinite;
+    animation-delay: .10s;
+}
+
+@keyframes border-anim3 {
+    0% { right: -100%; }
+    50%, 100% { right: 100%; }
+}
+
+/* Quarta animação (esquerda para cima) */
+.border-animation span:nth-child(4) {
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg, transparent, #38B1FF);
+    animation: border-anim4 1s linear infinite;
+    animation-delay: .80s;
+}
+
+@keyframes border-anim4 {
+    0% { bottom: -100%; }
+    50%, 100% { bottom: 100%; }
+}
+
+/* ============================================
+   Form Elements (Inputs, Button, etc.)
+   - Estilos dos inputs de texto, senha e botão de enviar
+   ============================================ */
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0 20px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transição suave para as mudanças de cor */
+}
+
+input[type="submit"] {
+    background-color: #38B1FF; /* Cor do botão para tema claro */
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #0098D9; /* Cor do botão ao passar o mouse */
+}
+
+input[type="checkbox"] {
+    margin-bottom: 20px;
+}
+
+/* ============================================
+   Error Message
+   - Estilo para exibir mensagens de erro
+   ============================================ */
+.erro-mensagem {
+    color: red; /* Cor da mensagem de erro */
+    margin-top: 10px; /* Espaço acima da mensagem */
+}
+
+/* ============================================
+   Links and Paragraph
+   - Estilo para links e parágrafos dentro do formulário
+   ============================================ */
+p {
+    color: #333; /* Cor do texto para tema claro */
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+p a {
+    color: #38B1FF; /* Cor do link para tema claro */
+    text-decoration: none;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+/* ============================================
+   Responsive Design
+   - Estilos responsivos para telas menores
+   ============================================ */
+@media (max-width: 600px) {
+    .login-container {
+        padding: 20px;
+    }
+
+    .logo {
+        max-width: 80px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+}
+
+/* ============================================
+   Navbar (Optional)
+   - Estilo para a barra de navegação
+   ============================================ */
+.navbar {
+    margin-bottom: 20px;
+}
+
+/* Estilos para o tema claro */
+body.light {
+    background-color: #f4f4f4; /* Cor de fundo para tema claro */
+    color: #333; /* Cor do texto para tema claro */
+}
+
+.navbar-light {
+    background-color: #e7e7e7; /* Cor de fundo para a navbar no tema claro (escurecida) */
+    color: #333; /* Cor do texto da navbar no tema claro */
+}
+
+/* Estilos para o tema escuro */
+body.dark {
+    background-color: #121212 !important; /* Cor de fundo para tema escuro */
+    color: #f4f4f4; /* Cor do texto para tema escuro */
+}
+
+.navbar-dark {
+    background-color: #121212 !important ; /* Cor de fundo para a navbar no tema escuro */
+    color: #f4f4f4; /* Cor do texto da navbar no tema escuro */
+}
+
+.login-container.dark {
+    background-color: #121212 !important; /* Cor de fundo do contêiner de login no modo escuro */
+    color: #f4f4f4; /* Cor do texto no contêiner de login no modo escuro */
+}
+
+input[type="text"].dark,
+input[type="password"].dark {
+    background-color: #333 !important; /* Cor de fundo para inputs no tema escuro */
+    color: #fff; /* Cor do texto nos inputs no tema escuro */
+}
+
+input[type="submit"].dark {
+    background-color: #38B1FF; /* Cor do botão no tema escuro */
+}
+
+input[type="submit"].dark:hover {
+    background-color: #0098D9; /* Cor do botão ao passar o mouse no tema escuro */
+}
+
+/* Cor do texto do título da navbar (CensoPCD+) */
+.navbar-brand {
+    color: #696969ef !important; /* Cor do texto para o título da navbar (igual ao botão) */
+}
+
+.navbar-brand:hover {
+    color: #b9b9b9d7 !important; /* Cor do texto ao passar o mouse */
+}
+
+/* ============================================
+   Estilos para o botão de tema no modo claro
+   ============================================ */
+   .navbar-light .dropdown-menu {
+    background-color: #ffffff; /* Cor de fundo do dropdown no modo claro */
+    border: 1px solid #ccc; /* Cor da borda do dropdown */
+}
+
+.navbar-light .dropdown-item {
+    color: #333; /* Cor do texto do item do dropdown no modo claro */
+}
+
+.navbar-light .dropdown-item:hover,
+.navbar-light .dropdown-item:focus {
+    background-color: #e7e7e7; /* Cor do item do dropdown ao passar o mouse e ao focar */
+}
+
+/* Se desejar, você pode adicionar um estilo para quando o item estiver ativo */
+.navbar-light .dropdown-item.active {
+    background-color: #e7e7e7; /* Cor do item ativo no dropdown */
+}
+
+/* ============================================
+   Estilos para o botão de tema no modo escuro
+   ============================================ */
+   .navbar-dark .dropdown-menu {
+    background-color: #121212; /* Cor de fundo do dropdown no modo escuro */
+    border: 1px solid #333; /* Cor da borda do dropdown */
+}
+
+.navbar-dark .dropdown-item {
+    color: #f4f4f4; /* Cor do texto do item do dropdown no modo escuro */
+}
+
+.navbar-dark .dropdown-item:hover {
+    background-color: #252525; /* Cor do item do dropdown ao passar o mouse no modo escuro */
+}
+
+/* Adiciona uma classe ao botão de tema quando o tema escuro está ativo */
+.dark .navbar .dropdown-toggle {
+    color: #f4f4f4; /* Cor do texto do botão de tema no modo escuro */
+}

@@ -1,0 +1,22 @@
+/* button.css */
+.btn-flutuante {
+    position: fixed;
+    bottom: 20px; /* Distância do fundo */
+    right: 20px; /* Distância da direita */
+    width: 60px;
+    height: 60px;
+    background-color: #4CAF50; /* Cor de fundo */
+    color: white;
+    border-radius: 50%; /* Botão circular */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 30px; /* Tamanho do ícone */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+    transition: background-color 0.3s;
+}
+
+.btn-flutuante:hover {
+    background-color: #45a049; /* Efeito ao passar o mouse */
+}

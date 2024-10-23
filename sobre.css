@@ -1,0 +1,122 @@
+/* sobre.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #38B1FF; /* Cor de fundo do cabeçalho */
+    color: white;
+    padding: 31px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.logo {
+    height: 50px; /* Ajuste o tamanho do logo conforme necessário */
+    margin-right: 15px;
+}
+
+.header-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    flex-grow: 1; /* Permite centralizar o título */
+}
+
+.header-menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.header-menu li {
+    margin: 0 35px;
+}
+
+.header-menu a {
+    color: white;
+    text-decoration: none;
+}
+
+.header-menu a:hover {
+    text-decoration: underline; /* Efeito ao passar o mouse */
+}
+
+.header-menu a i {
+    font-size: 18px;
+    margin-right: 15px;
+    color: white;
+}
+
+.container {
+    display: flex;
+    margin-top: 80px; /* Compensar o header fixo */
+}
+
+.sidebar {
+    width: 150px;
+    background-color: #f4f4f4;
+    padding: 25px;
+    margin-top: 25px;
+    height: calc(100vh - 80px);
+    border-right: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 80px;
+    left: 0;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar li {
+    margin: 15px 0;
+    margin-top: 30px;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: #333;
+}
+
+.sidebar a:hover {
+    text-decoration: underline;
+}
+
+.sidebar a i {
+    margin-right: 5px;
+}
+
+.content {
+    margin-left: 270px;
+    margin-top: 35px;
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.faq {
+    margin-left: 35px;
+    margin-right: 65px;
+    margin-top: 50px;
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.faq h3 {
+    margin-bottom: 10px;
+}
