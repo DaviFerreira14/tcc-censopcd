@@ -22,15 +22,23 @@ if ($stmt->num_rows === 0) {
 }
 $stmt->close();
 
+// Lógica para buscar informações de endereço
+$cep = $logradouro = $bairro = $cidade = $estado = '';
+$stmt = $conn->prepare("SELECT cep, logradouro, bairro, cidade, estado FROM enderecos WHERE usuario_id = ?");
+$stmt->bind_param("i", $usuario_id);
+$stmt->execute();
+$stmt->bind_result($cep, $logradouro, $bairro, $cidade, $estado);
+$stmt->fetch();
+$stmt->close();
+
 // Lógica para adicionar uma reclamação
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Sanitização e validação dos dados de entrada
     $titulo = filter_input(INPUT_POST, 'titulo', FILTER_SANITIZE_STRING);
-    $endereco = filter_input(INPUT_POST, 'endereco', FILTER_SANITIZE_STRING);
     $descricao = filter_input(INPUT_POST, 'descricao', FILTER_SANITIZE_STRING);
 
     // Validar se os campos estão vazios
-    if (empty($titulo) || empty($endereco) || empty($descricao)) {
+    if (empty($titulo) || empty($descricao)) {
         echo "<script>alert('Todos os campos são obrigatórios!'); window.history.back();</script>";
         exit();
     }
@@ -40,7 +48,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Insere a reclamação no banco de dados
     $stmt = $conn->prepare("INSERT INTO reclamacoes (titulo, data, endereco, descricao, usuario_id) VALUES (?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssi", $titulo, $data, $endereco, $descricao, $usuario_id);
+    $enderecoCompleto = "$logradouro, $bairro, $cidade - $estado, CEP: $cep"; // Formatação do endereço
+    $stmt->bind_param("ssssi", $titulo, $data, $enderecoCompleto, $descricao, $usuario_id);
 
     if ($stmt->execute()) {
         echo "<script>alert('Reclamação criada com sucesso!'); window.location.href='pagina_principal.php';</script>";
@@ -60,9 +69,9 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <title>CensoPCD+</title>
-    <link rel="icon" href="logos/logofundoinvisivel.ico" type="image/x-icon"> <!-- ícone da aba -->
-    <link rel="stylesheet" href="criar_reclamacao.css"> <!-- Link para o CSS específico -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Link para ícones -->
+    <link rel="icon" href="logos/logofundoinvisivel.ico" type="image/x-icon">
+    <link rel="stylesheet" href="criar_reclamacao.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         .microphone-btn {
             border: none;
@@ -87,7 +96,6 @@ $conn->close();
     </header>
 
     <div class="container">
-        <!-- Sidebar -->
         <aside class="sidebar">
             <ul>
                 <li><a href="pagina_principal.php"><i class="fas fa-home"></i> <strong>Início</strong></a></li>
@@ -108,13 +116,30 @@ $conn->close();
                 </label>
                 <input type="text" id="titulo" name="titulo" required>
 
-                <label for="endereco">
-                    <i class="fas fa-map-marker-alt"></i> Seu Endereço:
-                    <button type="button" class="microphone-btn" id="btn_gravar_endereco" title="Gravar Endereço">
-                        <i class="fas fa-microphone"></i>
-                    </button>
+                <label for="cep">
+                    <i class="fas fa-mail-bulk"></i> CEP:
                 </label>
-                <input type="text" id="endereco" name="endereco" required>
+                <input type="text" id="cep" name="cep" value="<?php echo htmlspecialchars($cep); ?>" required>
+
+                <label for="logradouro">
+                    <i class="fas fa-map-marker-alt"></i> Rua:
+                </label>
+                <input type="text" id="logradouro" name="logradouro" value="<?php echo htmlspecialchars($logradouro); ?>" required>
+
+                <label for="bairro">
+                    <i class="fas fa-home"></i> Bairro:
+                </label>
+                <input type="text" id="bairro" name="bairro" value="<?php echo htmlspecialchars($bairro); ?>" required>
+
+                <label for="cidade">
+                    <i class="fas fa-city"></i> Cidade:
+                </label>
+                <input type="text" id="cidade" name="cidade" value="<?php echo htmlspecialchars($cidade); ?>" required>
+
+                <label for="estado">
+                    <i class="fas fa-map"></i> Estado:
+                </label>
+                <input type="text" id="estado" name="estado" value="<?php echo htmlspecialchars($estado); ?>" required>
 
                 <label for="descricao">
                     <i class="fas fa-comment-dots"></i> Descrição da Reclamação:
@@ -136,7 +161,6 @@ $conn->close();
         </div>
     </div>
     
-    <!-- Codigo Vlibras -->
     <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
     <script>
         new window.VLibras.Widget('https://vlibras.gov.br/app');
@@ -144,11 +168,9 @@ $conn->close();
 
     <script>
         const btnGravarTitulo = document.getElementById('btn_gravar_titulo');
-        const btnGravarEndereco = document.getElementById('btn_gravar_endereco');
         const btnGravarDescricao = document.getElementById('btn_gravar_descricao');
 
         const campoTitulo = document.getElementById('titulo');
-        const campoEndereco = document.getElementById('endereco');
         const campoDescricao = document.getElementById('descricao');
 
         const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
@@ -174,7 +196,6 @@ $conn->close();
         }
 
         btnGravarTitulo.onclick = () => startRecognition(campoTitulo, btnGravarTitulo);
-        btnGravarEndereco.onclick = () => startRecognition(campoEndereco, btnGravarEndereco);
         btnGravarDescricao.onclick = () => startRecognition(campoDescricao, btnGravarDescricao);
     </script>
 </body>

@@ -165,3 +165,17 @@ main h1{
     display: flex;
     align-items: center;
 }
+
+.btn-trocar-senha, .btn-trocar-endereco {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #007bff; /* Cor de fundo */
+    color: white; /* Cor do texto */
+    text-decoration: none; /* Sem underline */
+    border-radius: 5px; /* Bordas arredondadas */
+}
+
+.btn-trocar-senha:hover, .btn-trocar-endereco:hover {
+    background-color: #0056b3; /* Cor de fundo ao passar o mouse */
+}
