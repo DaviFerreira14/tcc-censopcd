@@ -206,3 +206,20 @@ h2{
 .btn-flutuante:hover {
     background-color: #2a8fde; /* Cor de hover */
 }
+
+.titulo-reclamacao {
+    display: flex;
+    justify-content: space-between; /* Alinha os itens com espaço entre eles */
+    align-items: center; /* Alinha verticalmente */
+}
+
+.horario-reclamacao {
+    font-weight: normal; /* Estilo para o horário */
+    color: gray; /* Cor do horário */
+}
+
+.endereco-reclamacao {
+    margin-top: 5px; /* Espaço entre o título e o endereço */
+    font-size: 0.9em; /* Tamanho da fonte do endereço */
+    color: #555; /* Cor do texto do endereço */
+}

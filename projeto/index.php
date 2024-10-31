@@ -65,7 +65,7 @@ $conn->close();
     <title>CensoPCD+</title>
     <link rel="icon" href="logos/logofundoinvisivel.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css"> <!-- Link para o arquivo CSS externo -->
+    <link rel="stylesheet" href="style.css"> 
 </head>
 <body class="<?php echo $tema; ?>">
 

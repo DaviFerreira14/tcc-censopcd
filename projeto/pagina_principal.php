@@ -69,32 +69,14 @@ $conn->close();
     <meta charset="UTF-8">
     <title>CensoPCD+</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="icon" href="logos/logofundoinvisivel.ico" type="image/x-icon"> <!-- ícone da aba -->
-    <link rel="stylesheet" href="principal.css"> <!-- Link para o CSS específico -->
+    <link rel="icon" href="logos/logofundoinvisivel.ico" type="image/x-icon"> 
+    <link rel="stylesheet" href="principal.css"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script>
         function confirmarExclusao() {
             return confirm("Tem certeza que deseja excluir esta reclamação?");
         }
     </script>
-    <style>
-        .titulo-reclamacao {
-            display: flex;
-            justify-content: space-between; /* Alinha os itens com espaço entre eles */
-            align-items: center; /* Alinha verticalmente */
-        }
-        
-        .horario-reclamacao {
-            font-weight: normal; /* Estilo para o horário */
-            color: gray; /* Cor do horário */
-        }
-
-        .endereco-reclamacao {
-            margin-top: 5px; /* Espaço entre o título e o endereço */
-            font-size: 0.9em; /* Tamanho da fonte do endereço */
-            color: #555; /* Cor do texto do endereço */
-        }
-    </style>
 </head>
 <body>
     <header>
