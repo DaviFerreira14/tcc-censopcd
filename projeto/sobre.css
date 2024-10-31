@@ -62,6 +62,7 @@ header {
 .container {
     display: flex;
     margin-top: 80px; /* Compensar o header fixo */
+    margin-bottom: 25px;
 }
 
 .sidebar {

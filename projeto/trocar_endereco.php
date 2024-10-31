@@ -45,7 +45,6 @@ $conn->close();
     <meta charset="UTF-8">
     <title>Trocar Endereço - CensoPCD+</title>
     <link rel="icon" href="logos/logofundoinvisivel.ico" type="image/x-icon">
-    <link rel="stylesheet" href="perfil.css">
     <link rel="stylesheet" href="trocar_endereco.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -85,7 +84,8 @@ $conn->close();
                 <?php endif; ?>
             </div>
 
-            <h2>Buscar Novo Endereço</h2>
+            <h1>Buscar Novo Endereço</h1>
+            <div class="form-container">
             <form id="formBuscarEndereco">
                 <label for="cep">CEP:</label>
                 <input type="text" id="cep" name="cep" required>
@@ -104,6 +104,7 @@ $conn->close();
                 <button type="button" id="btnTrocarEndereco">Trocar Endereço</button>
             </form>
         </main>
+        </div>
     </div>
 
     <script>

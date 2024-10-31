@@ -109,13 +109,13 @@ $conn->close();
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+     < <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
         <a class="navbar-brand" href="#">CensoPCD+</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
+          ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Tema
@@ -129,6 +129,7 @@ $conn->close();
         </div>
     </nav>
 
+    <div class="outer-container">
     <div class="cadastro-container" style="margin-top: 70px;">
         <div class="logo-wrapper">
             <img src="logos/logofundoinvisivel.png" alt="Logo" class="logo">
@@ -161,6 +162,7 @@ $conn->close();
         <div vw-plugin-wrapper>
           <div class="vw-plugin-top-wrapper"></div>
         </div>
+    </div>
     </div>
       
     <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>

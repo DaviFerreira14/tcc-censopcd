@@ -110,10 +110,10 @@ main h1{
     padding: 15px;
     border-radius: 5px;
     background-color: #f9f9f9;
-    max-width: 600px; /* Largura máxima da div */
+    max-width: 300px; /* Largura máxima da div */
     margin: 100px auto 0 auto; /* Centraliza horizontalmente e ajusta a margem superior */
     text-align: left; /* Alinha o texto à esquerda */
-    margin-left:615px;
+    margin-left:340px;
 }
 
 
@@ -139,22 +139,6 @@ main h1{
     margin-top: 15; /* Remove a margem superior do primeiro parágrafo */
 }
 
-
-.btn-trocar-senha {
-    display: inline-block;
-    margin-top: 40px;
-    padding: 10px 15px;
-    background-color: #38B1FF; /* Cor do botão "Trocar Senha" */
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-left: 725px;
-}
-
-.btn-trocar-senha:hover {
-    background-color: #309ae0; /* Efeito ao passar o mouse */
-}
-
 .header-menu a i {
     font-size: 18px; /* Tamanho da seta */
     margin-right: 8px; /* Espaço entre a seta e o link, se necessário */
@@ -166,7 +150,7 @@ main h1{
     align-items: center;
 }
 
-.btn-trocar-senha, .btn-trocar-endereco {
+.btn-trocar-senha {
     display: inline-block;
     margin: 10px;
     padding: 10px 20px;
@@ -174,8 +158,25 @@ main h1{
     color: white; /* Cor do texto */
     text-decoration: none; /* Sem underline */
     border-radius: 5px; /* Bordas arredondadas */
+    margin-left: 347px;
 }
 
-.btn-trocar-senha:hover, .btn-trocar-endereco:hover {
+.btn-trocar-endereco {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #007bff; /* Cor de fundo */
+    color: white; /* Cor do texto */
+    text-decoration: none; /* Sem underline */
+    border-radius: 5px; /* Bordas arredondadas */
+
+}
+
+.btn-trocar-senha:hover {
     background-color: #0056b3; /* Cor de fundo ao passar o mouse */
 }
+
+.btn-trocar-endereco:hover {
+    background-color: #0056b3; /* Cor de fundo ao passar o mouse */
+}
+

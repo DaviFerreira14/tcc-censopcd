@@ -1,37 +1,152 @@
+/* perfil.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #38B1FF; /* Cor de fundo do cabeçalho */
+    color: white;
+    padding: 31px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.logo {
+    height: 50px; /* Ajuste o tamanho do logo conforme necessário */
+    margin-right: 15px;
+}
+
+.header-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    flex-grow: 1; /* Permite centralizar o título */
+}
+
+.header-menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.header-menu li {
+    margin: 0 35px;
+}
+
+.header-menu a {
+    color: white;
+    text-decoration: none;
+}
+
+.header-menu a:hover {
+    text-decoration: underline; /* Efeito ao passar o mouse */
+}
+
 .container {
     display: flex;
-    flex-direction: row;
+    margin-top: 80px; /* Compensar o header fixo */
 }
 
 .sidebar {
-    width: 200px;
-    background-color: #f8f9fa;
-    padding: 20px;
+    width: 150px; /* Largura do menu lateral */
+    background-color: #f4f4f4; /* Cor de fundo do menu */
+    padding: 25px;
+    height: calc(100vh - 80px); /* Altura total da viewport menos o cabeçalho */
+    border-right: 1px solid #ddd; /* Linha divisória à direita */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra */
+    position: fixed;
+    top: 80px; /* Posicionar abaixo do header */
+    left: 0;
 }
 
-.main {
-    flex: 1;
-    padding: 20px;
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
 }
 
-h1 {
+.sidebar li {
+    margin: 15px 0;
+    margin-top: 30px;
+}
+
+.sidebar a {
+    text-decoration: none;
     color: #333;
 }
 
+.sidebar a:hover {
+    text-decoration: underline; /* Efeito ao passar o mouse */
+}
+
+.sidebar a i {
+    margin-right: 5px; /* Espaço entre o ícone e o texto */
+}
+
+main {
+    margin-left: 170px; /* Compensa a largura da sidebar */
+    padding: 20px;
+    flex-grow: 1;
+}
+
+main h1{
+    margin-left: 44px;
+    margin-top: 47px;
+}
+
 .profile-info {
-    background-color: #e9ecef;
+    border: 1px solid #ccc;
     padding: 15px;
     border-radius: 5px;
-    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    max-width: 300px; /* Largura máxima da div */
+    margin: 100px auto 0 auto; /* Centraliza horizontalmente e ajusta a margem superior */
+    text-align: left; /* Alinha o texto à esquerda */
+    margin-left:340px;
 }
 
-.profile-info img {
-    max-width: 100px;
-    border-radius: 50%;
+
+.profile-info p {
+    margin: 35px 35px; /* Margem entre os parágrafos */
 }
 
-h2, h3 {
-    color: #007bff;
+.user{
+    margin-top: 15px;
+    margin-left: 115px;
+}
+
+.profile-info strong {
+    font-weight: bold; /* Destacar o texto forte */
+    color: #000000; /* Cor azul para os títulos dos campos */
+}
+
+.profile-info p:last-child {
+    margin-bottom: 15; /* Remove a margem inferior do último parágrafo */
+}
+
+.profile-info p:first-child {
+    margin-top: 15; /* Remove a margem superior do primeiro parágrafo */
+}
+
+.header-menu a i {
+    font-size: 18px; /* Tamanho da seta */
+    margin-right: 8px; /* Espaço entre a seta e o link, se necessário */
+    color: white; /* Cor da seta */
+}
+
+.header-menu a {
+    display: flex;
+    align-items: center;
 }
 
 form {
@@ -39,36 +154,56 @@ form {
     padding: 15px;
     border-radius: 5px;
     margin-top: 20px;
+    margin-left: 45px;
+    margin-bottom: 50px; /* Aumente este valor para criar mais espaço */
+    width: 800px;
 }
 
+
 label {
-    display: block;
-    margin: 10px 0 5px;
+    display: flex;
     font-weight: bold;
+    margin-left: 2px;
+    padding: 5px;
+
 }
+
 
 input[type="text"] {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 10px;
     margin-bottom: 15px;
+    max-width: 450px;
 }
 
+
 button {
-    background-color: #007bff;
+    background-color: #38B1FF;
     color: white;
     border: none;
     padding: 10px 15px;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
+    margin-left: 10px;
 }
+
 
 button:hover {
     background-color: #0056b3;
 }
 
+
 button:disabled {
     background-color: #cccccc;
     cursor: not-allowed;
+}
+
+h1{
+    margin-left: 150px;
+}
+
+.form-container {
+    margin-bottom: 50px;
 }
