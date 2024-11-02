@@ -7,11 +7,12 @@ body {
     height: 100vh;
 }
 
+/*Header*/
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #38B1FF; /* Cor de fundo do cabeçalho */
+    background-color: #38B1FF; 
     color: white;
     padding: 31px;
     width: 100%;
@@ -22,15 +23,8 @@ header {
 }
 
 .logo {
-    height: 50px; /* Ajuste o tamanho do logo conforme necessário */
+    height: 50px; 
     margin-right: 15px;
-}
-
-.header-title {
-    font-size: 24px;
-    font-weight: bold;
-    text-align: center;
-    flex-grow: 1; /* Permite centralizar o título */
 }
 
 .header-menu ul {
@@ -50,7 +44,7 @@ header {
 }
 
 .header-menu a:hover {
-    text-decoration: underline; /* Efeito ao passar o mouse */
+    text-decoration: underline; 
 }
 
 .header-menu a i {
@@ -58,64 +52,116 @@ header {
     margin-right: 15px;
 }
 
-.container {
-    display: flex;
-    margin-top: 80px; /* Compensar o header fixo */
-}
+/*Fim da Header*/
 
-.sidebar {
-    width: 150px;
-    background-color: #f4f4f4;
-    padding: 25px;
-    margin-top: 25px;
-    height: calc(100vh - 80px);
-    border-right: 1px solid #ddd;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    position: fixed;
-    top: 80px;
-    left: 0;
-}
-
-.sidebar ul {
-    list-style-type: none;
+/*Sidebar*/
+*{
+    margin: 0;
     padding: 0;
+    user-select: none;
+    box-sizing: border-box;
+    font-family: sans-serif;
 }
 
-.sidebar li {
-    margin: 15px 0;
-    margin-top: 30px;
-}
-
-.sidebar a {
-    text-decoration: none;
-    color: #333;
-}
-
-.sidebar a:hover {
+.header-title {
+    font-size: 24px;
     font-weight: bold;
+    text-align: center;
+    flex-grow: 1; 
 }
 
-.sidebar a i {
-    margin-right: 5px; /* Espaço entre o ícone e o texto */
+.sidebar{
+    position: fixed;
+    width: 253px;
+    height: 100%;
+    left: 0;
+    background: #f4f4f4;
+    border-right: 1px solid #ddd;
+    margin-top: 112px;
 }
+
+.sidebar .sidebarul{
+    background: #f4f4f4;
+    height: 100%;
+    width: 100%;
+    list-style: none;
+}
+
+.sidebar .sidebarul .sidebarli{
+    line-height: 60px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.sidebar .sidebarul .sidebarli .sidebar-a{
+    color: #000000;
+    text-decoration: none;
+    font-size: 18px;
+    padding-left: 40px;
+    font-weight: 500;
+    display: block;
+    width: 100%;
+    border-left: 3px solid transparent;
+}
+
+.sidebar .sidebarul .sidebarli .sidebar-a:hover{
+    color: #38B1FF;
+    background: #d4d4d4;
+    border-left-color: #38B1FF;
+}
+
+.sidebar .sidebarul .sidebarul{
+    position: static;
+    display: none;
+}
+
+.sidebar .sidebarul .sidebarul .sidebarli{
+    line-height: 42px;
+    border-bottom: none;
+}
+
+.sidebar .sidebarul .sidebarul .sidebarli .sidebar-a{
+    font-size: 17px;
+    color: #007bff;
+    padding-left: 80px;
+}
+
+.sidebar .sidebarul .sidebarul .sidebarli .sidebar-a:hover{
+    color: #38B1FF;
+    background: #d4d4d4;
+}
+
+#fundo{
+    color: #38B1FF;
+    background: #d4d4d4;
+    border-left: 3px solid transparent;
+    border-left-color: #38B1FF;
+}
+/*fim da Sidebar*/
 
 main {
-    margin-left: 180px; /* Espaço para a sidebar */
+    margin-left: 150px; 
     padding: 20px;
     flex-grow: 1;
 }
 
-.header-container {
+.principal-container {
     display: flex;
-    justify-content: space-between; /* Espaço entre os itens */
-    align-items: center; /* Alinha verticalmente */
-    margin-bottom: 20px; /* Espaço abaixo do cabeçalho */
-    margin-top: 40px;
-    margin-left: 30px;
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 20px; 
+    margin-top: 140px;
+    margin-left: 40px;
+}
+
+.principal-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    flex-grow: 1; 
 }
 
 .pesquisa-container {
-    display: flex; /* Para alinhar o input e o botão em linha */
+    display: flex; 
     margin-left: 640px;
 }
 
@@ -123,8 +169,8 @@ main {
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    margin-right: 5px; /* Espaço entre o input e o botão */
-    width: 500px;
+    margin-right: 5px; 
+    width: 400px;
 }
 
 .pesquisa-container button {
@@ -161,12 +207,15 @@ p{
 }
 
 h2{
-    margin-left: 30px;
+    margin-top: 50px;
+    margin-left: 115px;
 }
 
 .reclamacoes-lista {
     list-style-type: none;
     padding: 0;
+    margin-left: 85px;
+    margin-top: 50px;
 }
 
 .reclamacoes-lista ul {
@@ -204,22 +253,5 @@ h2{
 }
 
 .btn-flutuante:hover {
-    background-color: #2a8fde; /* Cor de hover */
-}
-
-.titulo-reclamacao {
-    display: flex;
-    justify-content: space-between; /* Alinha os itens com espaço entre eles */
-    align-items: center; /* Alinha verticalmente */
-}
-
-.horario-reclamacao {
-    font-weight: normal; /* Estilo para o horário */
-    color: gray; /* Cor do horário */
-}
-
-.endereco-reclamacao {
-    margin-top: 5px; /* Espaço entre o título e o endereço */
-    font-size: 0.9em; /* Tamanho da fonte do endereço */
-    color: #555; /* Cor do texto do endereço */
+    background-color: #2a8fde;
 }

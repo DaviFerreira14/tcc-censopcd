@@ -59,15 +59,24 @@ $conn->close();
         </nav>
     </header>
 
-    <div class="container">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <ul>
-                <li><a href="pagina_principal.php"><i class="fas fa-home"></i> <strong>Início</strong></a></li>
-                <li><a href="perfil.php"><i class="fas fa-user"></i> <strong>Perfil</strong></a></li>
-                <li><a href="sobre.php"><i class="fas fa-info-circle"></i> <strong>Sobre</strong></a></li>
-            </ul>
-        </aside>
+    <!-- Menu Lateral/Sidebar -->
+    <nav class="sidebar">
+        <ul class="sidebarul">
+            <li class="sidebarli">
+                <a href="pagina_principal.php" class="sidebar-a"><i class="fas fa-home"></i> Incío</a>
+            </li>
+            <li id="fundo" class="sidebarli">
+                <a href="perfil.php" class="sidebar-a"><i class="fas fa-user"></i> Perfil </a>
+            </li>
+            <li class="sidebarli">
+                <a href="cadastro_endereco.php"class="sidebar-a"><i class="fas fa-map-marker-alt"></i> Cadastro de endereço </a>
+            </li>
+            <li class="sidebarli">
+                <a href="sobre.php" class="sidebar-a"><i class="fas fa-info-circle"></i> Sobre </a>
+            </li>
+        </ul>
+    </nav>
+    
 
         <!-- Conteúdo principal -->
         <main>

@@ -66,33 +66,77 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar Endereço</title>
+    <title>CensoPCD+</title>
     <link rel="stylesheet" href="cadastro_endereco.css">
+    <link rel="icon" href="logos/logofundoinvisivel.ico" type="image/x-icon"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
 <body>
-    <h1>Cadastrar Endereço</h1>
     
+
+    <!-- Cabeçalho/Header -->
+        <header>
+        <img src="logos/logoblue.jpg" alt="Logo" class="logo">
+        <div class="header-title">CensoPCD+</div>
+        <nav class="header-menu">
+            <ul class="header-ul">
+                <li class="header-li"><a href="?action=logout" class="header-a"><i class="fas fa-sign-out-alt"></i></a></li>
+            </ul>
+        </nav>
+        </header>
+        
+    <!-- Menu Lateral/Sidebar -->
+    <nav class="sidebar">
+        <ul class="sidebarul">
+            <li class="sidebarli">
+                <a href="pagina_principal.php" class="sidebar-a"><i class="fas fa-home"></i> Incío</a>
+            </li>
+            <li class="sidebarli">
+                <a href="perfil.php" class="sidebar-a"><i class="fas fa-user"></i> Perfil </a>
+            </li>
+            <li id="fundo" class="sidebarli">
+                <a href="cadastro_endereco.php"class="sidebar-a"><i class="fas fa-map-marker-alt"></i> Cadastro de endereço </a>
+            </li>
+            <li class="sidebarli">
+                <a href="sobre.php" class="sidebar-a"><i class="fas fa-info-circle"></i> Sobre </a>
+            </li>
+        </ul>
+    </nav>
+    
+    <h1>Cadastrar Endereço</h1>
+
     <!-- Exibir mensagens -->
     <?php if ($message): ?>
         <div class="message"><?php echo htmlspecialchars($message); ?></div>
     <?php endif; ?>
 
     <form method="POST" action="">
-        <label for="cep">CEP:</label>
+        <label for="cep">
+            <i class="fas fa-mail-bulk"></i> CEP:
+        </label>
         <input type="text" id="cep" name="cep" required>
         <button type="button" id="buscar">Buscar</button><br><br>
 
-        <label for="logradouro">Rua:</label>
+        <label for="logradouro">
+            <i class="fas fa-map-marker-alt"></i> Rua:
+        </label>
         <input type="text" id="logradouro" name="logradouro" required><br><br>
 
-        <label for="bairro">Bairro:</label>
+        <label for="bairro">
+            <i class="fas fa-home"></i> Bairro:
+        </label>
         <input type="text" id="bairro" name="bairro" required><br><br>
 
-        <label for="cidade">Cidade:</label>
+        <label for="cidade">
+            <i class="fas fa-city"></i> Cidade:
+        </label>
         <input type="text" id="cidade" name="cidade" required><br><br>
 
-        <label for="estado">Estado:</label>
+        <label for="estado">
+            <i class="fas fa-map"></i> Estado:
+        </label>
         <input type="text" id="estado" name="estado" required><br><br>
 
         <button type="submit">Cadastrar Endereço</button>
@@ -124,6 +168,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 }
             });
         });
+    </script>
+
+    <!-- Codigo Vlibras -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+          <div class="vw-plugin-top-wrapper"></div>
+        </div>
+      </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+      new window.VLibras.Widget('https://vlibras.gov.br/app');
     </script>
 </body>
 </html>

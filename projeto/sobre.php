@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Link para ícones -->
 </head>
 <body>
-    <header>
+<header>
         <img src="logos/logoblue.jpg" alt="Logo" class="logo">
         <div class="header-title">CensoPCD+</div>
         <nav class="header-menu">
@@ -18,15 +18,23 @@
         </nav>
     </header>
 
-    <div class="container">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <ul>
-                <li><a href="pagina_principal.php"><i class="fas fa-home"></i> <strong>Início</strong></a></li>
-                <li><a href="perfil.php"><i class="fas fa-user"></i> <strong>Perfil</strong></a></li>
-                <li><a href="sobre.php"><i class="fas fa-info-circle"></i> <strong>Sobre</strong></a></li>
-            </ul>
-        </aside>
+    <!-- Menu Lateral/Sidebar -->
+    <nav class="sidebar">
+        <ul class="sidebarul">
+            <li class="sidebarli">
+                <a href="pagina_principal.php" class="sidebar-a"><i class="fas fa-home"></i> Incío</a>
+            </li>
+            <li class="sidebarli">
+                <a href="perfil.php" class="sidebar-a"><i class="fas fa-user"></i> Perfil </a>
+            </li>
+            <li class="sidebarli">
+                <a href="cadastro_endereco.php"class="sidebar-a"><i class="fas fa-map-marker-alt"></i> Cadastro de endereço </a>
+            </li>
+            <li id="fundo"  class="sidebarli">
+                <a href="sobre.php" class="sidebar-a"><i class="fas fa-info-circle"></i> Sobre </a>
+            </li>
+        </ul>
+    </nav>
 
         <div class="content">
             <h2>Sobre o CensoPCD+</h2>
@@ -44,7 +52,7 @@
 
             <div class="faq">
                 <h3>Como Usar</h3>
-                <p>Para utilizar o CensoPCD+, siga estas etapas:</p>
+                <p><strong>Para utilizar o CensoPCD+, siga estas etapas:</strong></p>
                 <ul>
                     <li>Faça login no sistema.</li>
                     <li>Vá para a página de reclamações e preencha o formulário.</li>

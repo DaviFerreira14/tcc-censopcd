@@ -80,7 +80,7 @@ $conn->close();
 </head>
 <body>
     <header>
-        <img src="logos/logoblue.jpg" alt="Logo" class="logo"> <!-- Logo no cabeçalho -->
+        <img src="logos/logoblue.jpg" alt="Logo" class="logo">
         <div class="header-title">CensoPCD+</div>
         <nav class="header-menu">
             <ul>
@@ -89,19 +89,27 @@ $conn->close();
         </nav>
     </header>
 
-    <div class="container">
-        <aside class="sidebar">
-            <ul>
-                <li><a href="pagina_principal.php"><i class="fas fa-home"></i> <strong>Início</strong></a></li>
-                <li><a href="perfil.php"><i class="fas fa-user"></i> <strong>Perfil</strong></a></li>
-                <li><a href="sobre.php"><i class="fas fa-info-circle"></i> <strong>Sobre</strong></a></li>
-                <li><a href="cadastro_endereco.php"><i class="fas fa-map-marker-alt"></i> Cadastro de Endereço</a></li>
-            </ul>
-        </aside>
-
-        <main>
-    <div class="header-container">
-        <h1 class="header-title">Central de Reclamações do Censopcd!</h1>
+    <!-- Menu Lateral/Sidebar -->
+    <nav class="sidebar">
+        <ul class="sidebarul">
+            <li id="fundo" class="sidebarli">
+                <a href="pagina_principal.php" class="sidebar-a"><i class="fas fa-home"></i> Incío</a>
+            </li>
+            <li class="sidebarli">
+                <a href="perfil.php" class="sidebar-a"><i class="fas fa-user"></i> Perfil </a>
+            </li>
+            <li class="sidebarli">
+                <a href="cadastro_endereco.php"class="sidebar-a"><i class="fas fa-map-marker-alt"></i> Cadastro de endereço </a>
+            </li>
+            <li class="sidebarli">
+                <a href="sobre.php" class="sidebar-a"><i class="fas fa-info-circle"></i> Sobre </a>
+            </li>
+        </ul>
+    </nav>
+    
+    <main>
+    <div class="principal-container">
+        <h1 class="principal-title">Central de Reclamações do Censopcd!</h1>
         <div class="pesquisa-container">
             <form action="pagina_principal.php" method="get">
                 <input type="text" placeholder="Pesquisar..." name="pesquisa" value="<?php echo htmlspecialchars($pesquisa); ?>">
@@ -122,7 +130,7 @@ $conn->close();
                                         // Define o fuso horário de Brasília
                                         date_default_timezone_set('America/Sao_Paulo');
                                         $data = new DateTime($reclamacao['data']);
-                                        echo $data->format('d/m/Y \á\s H:i'); // Formata a data e hora para DD/MM/AAAA às HH:MM
+                                        echo $data->format('d/m/Y á\s H:i'); // Formata a data e hora para DD/MM/AAAA às HH:MM
                                     ?>
                                 </span>
                             </div>
