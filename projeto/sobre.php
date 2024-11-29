@@ -18,23 +18,23 @@
         </nav>
     </header>
 
-    <!-- Menu Lateral/Sidebar -->
-    <nav class="sidebar">
-        <ul class="sidebarul">
-            <li class="sidebarli">
-                <a href="pagina_principal.php" class="sidebar-a"><i class="fas fa-home"></i> Incío</a>
-            </li>
-            <li class="sidebarli">
-                <a href="perfil.php" class="sidebar-a"><i class="fas fa-user"></i> Perfil </a>
-            </li>
-            <li class="sidebarli">
-                <a href="cadastro_endereco.php"class="sidebar-a"><i class="fas fa-map-marker-alt"></i> Cadastro de endereço </a>
-            </li>
-            <li id="fundo"  class="sidebarli">
-                <a href="sobre.php" class="sidebar-a"><i class="fas fa-info-circle"></i> Sobre </a>
-            </li>
-        </ul>
-    </nav>
+<!-- Menu Lateral/Sidebar -->
+<nav class="sidebar" id="sidebar">
+    <ul class="sidebarul">
+        <li class="sidebarli">
+            <a href="pagina_principal.php" class="sidebar-a"><i class="fas fa-home"></i> Incío</a>
+        </li>
+        <li class="sidebarli">
+            <a href="perfil.php" class="sidebar-a"><i class="fas fa-user"></i> Perfil </a>
+        </li>
+        <li class="sidebarli">
+            <a href="cadastro_endereco.php"class="sidebar-a"><i class="fas fa-map-marker-alt"></i> Cadastro de endereço </a>
+        </li>
+        <li id="fundo"  class="sidebarli">
+            <a href="sobre.php" class="sidebar-a"><i class="fas fa-info-circle"></i> Sobre </a>
+        </li>
+    </ul>
+</nav>
 
         <div class="content">
             <h2>Sobre o CensoPCD+</h2>

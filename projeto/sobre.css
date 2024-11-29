@@ -159,3 +159,101 @@ header {
 .faq h3 {
     margin-bottom: 10px;
 }
+
+/* Tornar o layout responsivo */
+
+/* Geral - Reduzir o tamanho do header e sidebar em telas menores */
+@media screen and (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+    }
+
+    .header-title {
+        font-size: 18px;
+        text-align: left;
+        margin-bottom: 10px;
+    }
+
+    .logo {
+        height: 40px;
+    }
+
+    .header-menu ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header-menu li {
+        margin: 5px 0;
+    }
+
+    .sidebar {
+        width: 200px;
+        margin-top: 70px; /* Ajustar com base no header menor */
+    }
+
+    .sidebar .sidebarul .sidebarli .sidebar-a {
+        font-size: 16px;
+        padding-left: 20px;
+    }
+
+    .content {
+        margin-left: 210px; /* Sidebar menor */
+        margin-top: 100px; /* Header menor */
+        padding: 15px;
+    }
+}
+
+/* Telas muito pequenas - Exibir layout em uma coluna */
+@media screen and (max-width: 480px) {
+    header {
+        padding: 10px;
+    }
+
+    .header-menu ul {
+        display: none; /* Esconder o menu se necessário em telas muito pequenas */
+    }
+
+    .sidebar {
+        width: 100px;
+    }
+
+    .sidebar .sidebarul .sidebarli .sidebar-a {
+        font-size: 14px;
+        padding-left: 10px;
+    }
+
+    .content {
+        margin-left: 110px;
+        margin-top: 90px;
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .faq {
+        margin-left: 15px;
+        margin-right: 15px;
+        padding: 15px;
+    }
+
+    .faq h3 {
+        font-size: 16px;
+    }
+}
+
+/* Ajustes para telas grandes */
+@media screen and (min-width: 1024px) {
+    .content {
+        margin-left: 260px;
+        margin-top: 160px;
+        padding: 25px;
+    }
+
+    .faq {
+        margin-left: 50px;
+        margin-right: 50px;
+        padding: 40px;
+    }
+}
