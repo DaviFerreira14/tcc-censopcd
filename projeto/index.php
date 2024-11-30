@@ -17,7 +17,6 @@ if (isset($_POST['salvar_tema'])) {
     setcookie('tema', $tema, time() + (86400 * 30), "/"); // 86400 = 1 dia
 }
 
-
 $erro_mensagem = ""; // Variável para armazenar mensagem de erro
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -28,6 +27,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($cpf) || empty($senha)) {
         $erro_mensagem = "Por favor, preencha todos os campos.";
     } else {
+        // Verificar se é o CPF e senha específicos para redirecionar para 'funcionario.php'
+        if ($cpf === '12345678900' && $senha === 'adm') {
+            $_SESSION['usuario_id'] = $cpf; // Armazenar um identificador fictício para o usuário
+
+            // Adicionar uma mensagem de depuração
+            error_log("Redirecionando para funcionario.php com CPF: $cpf");
+
+            header("Location: funcionario.php"); // Redirecionar para a página de funcionários
+            exit();
+        }
+
         // Consulta para obter o ID do usuário
         $stmt = $conn->prepare("SELECT usuario_id, Senha FROM usuarios WHERE CPF = ?");
         $stmt->bind_param("s", $cpf);
