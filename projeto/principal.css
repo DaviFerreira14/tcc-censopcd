@@ -258,3 +258,60 @@ h2{
 
 /* RESPONSIVIDADE */
 
+/* Media Queries */
+@media (max-width: 1024px) {
+    main {
+        margin-left: 220px; /* Reduz a margem */
+    }
+    .pesquisa-container input {
+        width: 250px; /* Ajusta a largura da barra de pesquisa */
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column; /* Header ocupa mais espaço vertical */
+    }
+    .header-menu ul {
+        justify-content: center; /* Centraliza os menus */
+    }
+    .sidebar {
+        width: 200px; /* Reduz a largura da sidebar */
+    }
+    main {
+        margin-left: 210px; /* Ajusta margem para sidebar menor */
+    }
+    .pesquisa-container input {
+        width: 180px; /* Ajusta largura para telas menores */
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        position: static; /* Sidebar passa a ser fixa no topo */
+        height: auto; /* Ajusta altura automaticamente */
+        width: 100%;
+        border-right: none; /* Remove borda direita */
+        margin-top: 0;
+    }
+    .sidebar .sidebar-a {
+        font-size: 14px; /* Reduz tamanho da fonte */
+        padding: 8px;
+    }
+    main {
+        margin: 0; /* Remove margem para sidebar */
+        padding: 15px; /* Reduz padding geral */
+    }
+    .pesquisa-container input {
+        width: 100%; /* Barra de pesquisa ocupa 100% da largura */
+    }
+    .pesquisa-container button {
+        width: 100%;
+    }
+    .btn-flutuante {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+    
+}
