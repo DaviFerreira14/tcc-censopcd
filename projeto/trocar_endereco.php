@@ -60,6 +60,14 @@ $conn->close();
         </nav>
     </header>
 
+    <div class="menu-toggle" onclick="toggleSidebar()">☰</div>
+    <script>
+    function toggleSidebar() {
+        document.querySelector('.sidebar').classList.toggle('active');
+    }
+    </script>
+
+
     <!-- Menu Lateral/Sidebar -->
     <nav class="sidebar">
         <ul class="sidebarul">
