@@ -77,10 +77,10 @@ $conn->close();
             border: none;
             background: transparent;
             cursor: pointer;
-            color: green; /* Cor padrão quando não está gravando */
+            color: green;
         }
         .recording {
-            color: red; /* Cor enquanto grava */
+            color: red; 
         }
     </style>
 </head>
@@ -95,7 +95,7 @@ $conn->close();
         </nav>
     </header>
 
-      <!-- Menu Lateral/Sidebar -->
+
       <nav class="sidebar">
         <ul class="sidebarul">
             <li class="sidebarli">
