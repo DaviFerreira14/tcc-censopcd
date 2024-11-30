@@ -142,10 +142,11 @@ main {
     margin-left: 170px; /* Compensa a largura da sidebar */
     padding: 20px;
     flex-grow: 1;
+    align-items: center;
 }
 
 main h1{
-    margin-left: 44px;
+    margin-left: 150px;
     margin-top: 47px;
 }
 
@@ -252,4 +253,140 @@ h1{
 
 .form-container {
     margin-bottom: 50px;
+}
+
+/* Ajustes responsivos para telas menores */
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 200px; /* Reduz a largura da sidebar */
+    }
+
+    main {
+        margin-left: 220px; /* Ajusta o conteúdo principal para se alinhar à sidebar reduzida */
+    }
+
+    .profile-info {
+        margin-left: 20px; /* Ajusta a posição da informação do perfil */
+        margin-right: 20px;
+    }
+    .btn-trocar-senha,
+    .btn-trocar-endereco {
+        margin: 10px auto; /* Centraliza os botões */
+        width: 90%; /* Ajusta a largura dos botões */
+        text-align: center;
+    }
+    
+    form {
+        background-color: #f1f1f1;
+        padding: 15px;
+        border-radius: 5px;
+        margin-top: 20px;
+        margin-left: 150px;
+        margin-bottom: 50px; /* Aumente este valor para criar mais espaço */
+        width: 800px;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-wrap: wrap; /* Permite que os elementos se ajustem em várias linhas */
+        padding: 20px;
+    }
+
+    .header-title {
+        font-size: 18px; /* Reduz o tamanho do título */
+        text-align: center; /* Centraliza o título */
+        flex-grow: unset; /* Remove o crescimento flexível */
+        width: 100%; /* Ocupa 100% da largura */
+    }
+
+    .logo {
+        margin: auto; /* Centraliza o logo horizontalmente */
+    }
+
+    .sidebar {
+        width: 100px; /* Sidebar mais estreita */
+    }
+
+    .sidebar .sidebarul .sidebarli .sidebar-a {
+        font-size: 14px; /* Reduz o tamanho do texto */
+        padding-left: 20px;
+    }
+
+    main {
+        margin-left: 120px; /* Ajusta o conteúdo principal */
+    }
+
+    .profile-info {
+        margin: 10px auto; /* Margens automáticas para centralizar */
+        width: 90%; /* Ocupa quase toda a largura */
+    }
+
+    .profile-info img.user {
+        width: 80px; /* Reduz o tamanho da imagem do usuário */
+        height: auto;
+        margin-left: calc(50% - 40px); /* Centraliza horizontalmente */
+    }
+    
+    .btn-trocar-senha,
+    .btn-trocar-endereco {
+        margin: 10px auto; /* Centraliza os botões */
+        width: 90%; /* Ajusta a largura dos botões */
+        text-align: center;
+    }
+    form {
+        background-color: #f1f1f1;
+        padding: 15px;
+        border-radius: 5px;
+        margin-top: 20px;
+        margin-left: 150px;
+        margin-bottom: 50px; /* Aumente este valor para criar mais espaço */
+        width: 800px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        flex-direction: column; /* Header em coluna */
+        align-items: center;
+        text-align: center;
+    }
+
+    .header-menu ul {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        display: none; /* Oculta a sidebar em telas muito pequenas */
+    }
+
+    main {
+        margin-left: 0; /* Remove a margem lateral */
+        align-items: center;
+    }
+
+    .btn-trocar-senha,
+    .btn-trocar-endereco {
+        margin: 10px auto; /* Centraliza os botões */
+        width: 90%; /* Ajusta a largura dos botões */
+        text-align: center;
+    }
+
+    .profile-info {
+        padding: 10px;
+    }
+
+    .profile-info p {
+        font-size: 14px; /* Reduz o tamanho do texto */
+    }
+    
+    form {
+        background-color: #f1f1f1;
+        padding: 15px;
+        border-radius: 5px;
+        margin-top: 20px;
+        margin-left: 150px;
+        margin-bottom: 50px; /* Aumente este valor para criar mais espaço */
+        width: 800px;
+    }
 }

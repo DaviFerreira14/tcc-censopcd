@@ -139,7 +139,7 @@ header {
 /*fim da Sidebar*/
 
 main {
-    margin-left: 750px; /* Compensa a largura da sidebar */
+    margin-left: 650px; /* Compensa a largura da sidebar */
     padding: 20px;
     flex-grow: 1;
 }
