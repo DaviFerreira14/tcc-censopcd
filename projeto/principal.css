@@ -288,10 +288,10 @@ h2{
 
 @media (max-width: 480px) {
     .sidebar {
-        position: static; /* Sidebar passa a ser fixa no topo */
-        height: auto; /* Ajusta altura automaticamente */
+        position: static; 
+        height: auto; 
         width: 100%;
-        border-right: none; /* Remove borda direita */
+        border-right: none; 
         margin-top: 0;
     }
     .sidebar .sidebar-a {
