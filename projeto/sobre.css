@@ -191,7 +191,7 @@ header {
 
     .sidebar {
         width: 200px;
-        margin-top: 70px; /* Ajustar com base no header menor */
+        margin-top: 70px; 
     }
 
     .sidebar .sidebarul .sidebarli .sidebar-a {
