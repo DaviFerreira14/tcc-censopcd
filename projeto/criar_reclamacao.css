@@ -137,11 +137,10 @@ header {
 /*fim da Sidebar*/
 
 .content {
-    margin-left: 170px; /* Compensa a largura da sidebar */
     padding: 20px;
     flex-grow: 1;
-    margin-top: 190px;
-    margin-left: 190px;
+    margin-top: 210px;
+    margin-left: 40px;
 }
 
 form {
@@ -160,7 +159,7 @@ input[type="text"],
 textarea {
     padding: 10px;
     margin-bottom: 10px;
-    width: 600px;
+    width: 650px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
@@ -188,8 +187,8 @@ input[type="submit"]:hover {
 
 h1 {
     text-align: center;
-    margin-left: 225px;
-    margin-top: 65px;
+    margin-left: 325px;
+    margin-top: 130px;
 }
 
 /* microfone */
@@ -202,4 +201,81 @@ h1 {
 }
 .recording {
     color: red; /* Cor enquanto grava */
+}
+
+/* Ajustes responsivos para telas menores */
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 200px; /* Reduz a largura da sidebar */
+    }
+
+    .content {
+        margin-top: 280px;
+        padding: 10px;
+    }
+
+    .content p {
+        font-size: 14px; /* Reduz o tamanho do texto */
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-wrap: wrap; /* Permite que os elementos se ajustem em várias linhas */
+        padding: 20px;
+    }
+
+    .header-title {
+        font-size: 18px; /* Reduz o tamanho do título */
+        text-align: center; /* Centraliza o título */
+        flex-grow: unset; /* Remove o crescimento flexível */
+        width: 100%; /* Ocupa 100% da largura */
+    }
+
+    .logo {
+        margin: auto; /* Centraliza o logo horizontalmente */
+    }
+
+    .sidebar {
+        width: 100px; /* Sidebar mais estreita */
+    }
+
+    .sidebar .sidebarul .sidebarli .sidebar-a {
+        font-size: 14px; /* Reduz o tamanho do texto */
+        padding-left: 20px;
+    }
+
+    .content {
+        margin-top: 280px;
+        padding: 10px;
+    }
+
+    .content p {
+        font-size: 14px; /* Reduz o tamanho do texto */
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        flex-direction: column; /* Header em coluna */
+        align-items: center;
+        text-align: center;
+    }
+
+    .header-menu ul {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        display: none; /* Oculta a sidebar em telas muito pequenas */
+    }
+
+    .content {
+        margin-top: 180px;
+        padding: 10px;
+    }
+
+    .content p {
+        font-size: 14px; /* Reduz o tamanho do texto */
+    }
 }

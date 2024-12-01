@@ -95,7 +95,6 @@ $conn->close();
         </nav>
     </header>
 
-
       <nav class="sidebar">
         <ul class="sidebarul">
             <li class="sidebarli">
@@ -116,7 +115,8 @@ $conn->close();
         <h1>Criar Reclamação</h1>
         
         <div class="content">
-            <form method="POST">
+            <div class="box">
+                <form method="POST">
                 <label for="titulo">
                     <i class="fas fa-pencil-alt"></i> Título da Reclamação:
                     <button type="button" class="microphone-btn" id="btn_gravar_titulo" title="Gravar Título">
@@ -160,6 +160,8 @@ $conn->close();
 
                 <input type="submit" value="Criar Reclamação">
             </form>
+            </div>
+            
         </div>
     </div>
 
