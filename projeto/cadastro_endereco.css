@@ -57,6 +57,32 @@ header {
     font-size: 18px;
     margin-right: 0;
 }
+
+.header-menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.header-menu li {
+    margin: 0 35px;
+}
+
+.header-menu a {
+    color: white;
+    text-decoration: none;
+}
+
+.header-menu a:hover {
+    text-decoration: underline; 
+}
+
+.header-menu a i {
+    font-size: 18px;
+    margin-right: 15px;
+}
+
 /*Fim da Header */
 
 /*Sidebar*/
@@ -203,4 +229,28 @@ button:hover {
     background-color: #f8d7da;
     color: #721c24;
     border: 1px solid #f5c6cb;
+}
+
+/* Media Queries */
+@media (max-width: 480px) {
+    header {
+        padding: 8px;
+        height: 70px;
+    }
+
+    .header-title {
+        font-size: 14px;
+    }
+
+    .logo {
+        height: 25px;
+    }
+
+    .sidebar {
+        width: 150px;
+    }
+
+    form {
+        width: 95%;
+    }
 }

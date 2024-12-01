@@ -82,28 +82,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="header-title">CensoPCD+</div>
         <nav class="header-menu">
             <ul class="header-ul">
-                <li class="header-li"><a href="?action=logout" class="header-a"><i class="fas fa-sign-out-alt"></i></a></li>
+            <li><a href="pagina_principal.php"><i class="fas fa-arrow-left"></i></a></li>
             </ul>
         </nav>
         </header>
         
-    <!-- Menu Lateral/Sidebar -->
-    <nav class="sidebar">
-        <ul class="sidebarul">
-            <li class="sidebarli">
-                <a href="pagina_principal.php" class="sidebar-a"><i class="fas fa-home"></i> Incío</a>
-            </li>
-            <li class="sidebarli">
-                <a href="perfil.php" class="sidebar-a"><i class="fas fa-user"></i> Perfil </a>
-            </li>
-            <li id="fundo" class="sidebarli">
-                <a href="cadastro_endereco.php"class="sidebar-a"><i class="fas fa-map-marker-alt"></i> Cadastro de endereço </a>
-            </li>
-            <li class="sidebarli">
-                <a href="sobre.php" class="sidebar-a"><i class="fas fa-info-circle"></i> Sobre </a>
-            </li>
-        </ul>
-    </nav>
     
     <h1>Cadastrar Endereço</h1>
 

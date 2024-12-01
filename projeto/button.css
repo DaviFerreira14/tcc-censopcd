@@ -1,22 +1,22 @@
 /* button.css */
 .btn-flutuante {
     position: fixed;
-    bottom: 20px; /* Distância do fundo */
-    right: 20px; /* Distância da direita */
+    bottom: 20px; 
+    right: 20px; 
     width: 60px;
     height: 60px;
-    background-color: #4CAF50; /* Cor de fundo */
+    background-color: #4CAF50; 
     color: white;
-    border-radius: 50%; /* Botão circular */
+    border-radius: 50%; 
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    font-size: 30px; /* Tamanho do ícone */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+    font-size: 30px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
     transition: background-color 0.3s;
 }
 
 .btn-flutuante:hover {
-    background-color: #45a049; /* Efeito ao passar o mouse */
+    background-color: #45a049; 
 }
