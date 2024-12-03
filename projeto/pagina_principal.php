@@ -112,12 +112,29 @@ $conn->close();
             }
             // Armazenar a preferência do tema no LocalStorage
             localStorage.setItem('theme', theme);
+
+            // Fechar o dropdown após a seleção
+            toggleDropdown();
         }
 
-        // Carregar o tema salvo no LocalStorage
+        // Carregar o tema salvo no LocalStorage e fechar o dropdown inicialmente
         document.addEventListener('DOMContentLoaded', function() {
             const savedTheme = localStorage.getItem('theme') || 'light';
             toggleTheme(savedTheme);
+
+            // Fechar o dropdown inicialmente
+            const dropdown = document.getElementById("themeDropdown");
+            if (dropdown) {
+                dropdown.classList.remove("show");
+            }
+
+            // Adicionar evento de clique nas opções do dropdown para fechá-lo após a seleção
+            const options = document.querySelectorAll('.dropdown-option');
+            options.forEach(function(option) {
+                option.addEventListener('click', function() {
+                    toggleDropdown();
+                });
+            });
         });
 
         // Função para alternar o dropdown
@@ -128,6 +145,7 @@ $conn->close();
             }
         }
     </script>
+
 
     <style>
         /* Estilos do Dropdown */

@@ -20,6 +20,12 @@
 
             // Armazenar a preferência do tema no LocalStorage
             localStorage.setItem('theme', theme);
+
+            // Fechar o dropdown após a seleção de um tema
+            const dropdown = document.getElementById("themeDropdown");
+            if (dropdown) {
+                dropdown.classList.remove("show");
+            }
         }
 
         // Carregar o tema salvo no LocalStorage
