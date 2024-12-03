@@ -1,11 +1,14 @@
 <?php
-// Conexão com o banco de dados
-$conn = new mysqli('localhost', 'usuario', 'senha', 'banco');
+session_start();
 
-// Verifica a conexão
-if ($conn->connect_error) {
-    die("Falha na conexão: " . $conn->connect_error);
+// Verifica se o usuário está logado
+if (!isset($_SESSION['usuario_id'])) {
+    header("Location: index.php");
+    exit();
 }
+
+// Incluir o arquivo de conexão com o banco de dados
+include 'db.php'; // Incluindo a conexão
 
 // Manipulação de ações
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -32,12 +35,22 @@ $result = $conn->query("SELECT * FROM reclamacoes WHERE status != 'arquivado'");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="gerenciar_reclamacao.css">
-    <title>Funcionário</title>
+    <link rel="icon" href="logos/logofundoinvisivel.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>CensoPCD+</title>
 </head>
 <body>
-<header>
-    <h1 class="header-title">Painel de Reclamações</h1>
-</header>
+    
+    <header>
+        <img src="logos/logoblue.jpg" alt="Logo" class="logo">
+        <div class="header-title">CensoPCD+</div>
+        <nav class="header-menu">
+            <ul>
+                <li><a href="pagina_principal.php"><i class="fas fa-arrow-left"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
 <div class="container">
     <aside class="sidebar">
         <ul>

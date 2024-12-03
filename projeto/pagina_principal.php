@@ -44,12 +44,28 @@ if (isset($_GET['delete_id'])) {
     $delete_stmt->bind_param("ii", $delete_id, $_SESSION['usuario_id']);
     if ($delete_stmt->execute()) {
         // Redireciona após a exclusão
-        header("Location: pagina_principal.php?msg=Reclamação excluída com sucesso."); 
+        header("Location: pagina_principal.php?msg=Reclamação excluída com sucesso.");
         exit();
     } else {
         // Mensagem de erro em caso de falha na exclusão
-        header("Location: pagina_principal.php?msg=Erro ao excluir reclamação."); 
+        header("Location: pagina_principal.php?msg=Erro ao excluir reclamação.");
         exit();
+    }
+}
+
+// Função para retornar o texto do status com base no status_id
+function getStatusText($status_id) {
+    switch ($status_id) {
+        case 1:
+            return 'Aberta';
+        case 2:
+            return 'Resolvida';
+        case 3:
+            return 'Em Andamento';
+        case 4:
+            return 'Cancelada';
+        default:
+            return 'Desconhecido';
     }
 }
 
@@ -69,14 +85,69 @@ $conn->close();
     <meta charset="UTF-8">
     <title>CensoPCD+</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="icon" href="logos/logofundoinvisivel.ico" type="image/x-icon"> 
-    <link rel="stylesheet" href="principal.css"> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="logos/logofundoinvisivel.ico" type="image/x-icon">
+    <link rel="stylesheet" href="principal.css">
     <script>
         function confirmarExclusao() {
             return confirm("Tem certeza que deseja excluir esta reclamação?");
         }
+
+        // Função para alternar entre os temas
+        function toggleTheme(theme) {
+            if (theme === 'dark') {
+                document.body.classList.add('dark-theme');
+                document.body.classList.remove('light-theme');
+            } else {
+                document.body.classList.add('light-theme');
+                document.body.classList.remove('dark-theme');
+            }
+            // Armazenar a preferência do tema no LocalStorage
+            localStorage.setItem('theme', theme);
+        }
+
+        // Carregar o tema salvo no LocalStorage
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            toggleTheme(savedTheme);
+        });
+
+        // Função para alternar o dropdown
+        function toggleDropdown() {
+            var dropdown = document.getElementById("themeDropdown");
+            dropdown.classList.toggle("show");
+        }
     </script>
+
+    <style>
+        /* Estilos do Dropdown */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {background-color: #ddd;}
+
+        /* Exibir o dropdown quando for ativado */
+        .show {
+            display: block;
+        }
+
+        /* Estilos gerais para o Menu Lateral */
+        .sidebarul li {
+            position: relative;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -99,72 +170,83 @@ $conn->close();
                 <a href="perfil.php" class="sidebar-a"><i class="fas fa-user"></i> Perfil </a>
             </li>
             <li class="sidebarli">
-                <a href="cadastro_endereco.php"class="sidebar-a"><i class="fas fa-map-marker-alt"></i> Cadastro de endereço </a>
+                <a href="cadastro_endereco.php" class="sidebar-a"><i class="fas fa-map-marker-alt"></i> Cadastro de endereço </a>
             </li>
             <li class="sidebarli">
                 <a href="sobre.php" class="sidebar-a"><i class="fas fa-info-circle"></i> Sobre </a>
+            </li>
+            <!-- Nova opção de Tema com dropdown -->
+            <li class="sidebarli">
+                <a href="javascript:void(0);" class="sidebar-a" onclick="toggleDropdown()">
+                    <i class="fas fa-paint-brush"></i> Tema <i class="fas fa-chevron-down"></i>
+                </a>
+                <div id="themeDropdown" class="dropdown-content">
+                    <a href="javascript:void(0);" onclick="toggleTheme('light')">Claro</a>
+                    <a href="javascript:void(0);" onclick="toggleTheme('dark')">Escuro</a>
+                </div>
             </li>
         </ul>
     </nav>
     
     <main>
-    <div class="principal-container">
-        <h1 class="principal-title">Central de Reclamações do Censopcd!</h1>
-        <div class="pesquisa-container">
-            <form action="pagina_principal.php" method="get">
-                <input type="text" placeholder="Pesquisar..." name="pesquisa" value="<?php echo htmlspecialchars($pesquisa); ?>">
-                <button type="submit"><i class="fas fa-search"></i></button>
-            </form>
+        <div class="principal-container">
+            <h1 class="principal-title">Central de Reclamações do Censopcd!</h1>
+            <div class="pesquisa-container">
+                <form action="pagina_principal.php" method="get">
+                    <input type="text" placeholder="Pesquisar..." name="pesquisa" value="<?php echo htmlspecialchars($pesquisa); ?>">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
         </div>
-    </div>
 
-            <h2>Suas Reclamações</h2>
-            <?php if ($result->num_rows > 0): ?>
-                <ul class="reclamacoes-lista">
-                    <?php while ($reclamacao = $result->fetch_assoc()): ?>
-                        <li class="reclamacao-item">
-                            <div class="titulo-reclamacao">
-                                <strong>Título: <?php echo htmlspecialchars($reclamacao['titulo']); ?></strong>
-                                <span class="horario-reclamacao">
-                                    <?php 
-                                        // Define o fuso horário de Brasília
-                                        date_default_timezone_set('America/Sao_Paulo');
-                                        $data = new DateTime($reclamacao['data']);
-                                        echo $data->format('d/m/Y á\s H:i'); // Formata a data e hora para DD/MM/AAAA às HH:MM
-                                    ?>
-                                </span>
-                            </div>
-                            <div class="endereco-reclamacao">
+        <h2>Suas Reclamações</h2>
+        <?php if ($result->num_rows > 0): ?>
+            <ul class="reclamacoes-lista">
+                <?php while ($reclamacao = $result->fetch_assoc()): ?>
+                    <li class="reclamacao-item">
+                        <div class="titulo-reclamacao">
+                            <strong>Título: <?php echo htmlspecialchars($reclamacao['titulo']); ?></strong>
+                            <span class="horario-reclamacao">
+                                <?php 
+                                    date_default_timezone_set('America/Sao_Paulo');
+                                    $data = new DateTime($reclamacao['data']);
+                                    echo $data->format('d/m/Y á\s H:i');
+                                ?>
+                            </span>
+                        </div>
+                        <div class="endereco-reclamacao">
                             Endereço: <?php echo htmlspecialchars($reclamacao['endereco']); ?>
-                            </div>
-                            <br>
-                            Descrição: <span class="reclamacao-descricao"><?php echo nl2br(htmlspecialchars($reclamacao['descricao'])); ?></span><br>
-                            <a href="?delete_id=<?php echo $reclamacao['id']; ?>" onclick="return confirmarExclusao();" class="btn-excluir" aria-label="Excluir reclamação">
-                                <i class="fas fa-trash-alt"></i> <!-- Apenas o ícone -->
-                            </a>
-                            <hr>
-                        </li>
-                    <?php endwhile; ?>
-                </ul>
-            <?php else: ?>
-                <p>Nenhuma reclamação encontrada com esse título.</p>
-            <?php endif; ?>
-        </main>
-    </div>
+                        </div>
+                        <br>
+                        Descrição: <span class="reclamacao-descricao"><?php echo nl2br(htmlspecialchars($reclamacao['descricao'])); ?></span><br>
+                        
+                        <div class="status-btn" title="Status da reclamação">
+                            <span class="status-text"><?php echo getStatusText($reclamacao['status_id']); ?></span>
+                        </div>
+
+                        <a href="?delete_id=<?php echo $reclamacao['id']; ?>" onclick="return confirmarExclusao();" class="btn-excluir" aria-label="Excluir reclamação">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                        <hr>
+                    </li>
+                <?php endwhile; ?>
+            </ul>
+        <?php else: ?>
+            <p>Nenhuma reclamação encontrada com esse título.</p>
+        <?php endif; ?>
+    </main>
 
     <a href="criar_reclamacao.php" class="btn-flutuante">+</a>
 
-    
-    <!-- Codigo Vlibras -->
     <div vw class="enabled">
         <div vw-access-button class="active"></div>
         <div vw-plugin-wrapper>
-          <div class="vw-plugin-top-wrapper"></div>
+            <div class="vw-plugin-top-wrapper"></div>
         </div>
-      </div>
+    </div>
     <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
     <script>
-      new window.VLibras.Widget('https://vlibras.gov.br/app');
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
     </script>
 </body>
 </html>

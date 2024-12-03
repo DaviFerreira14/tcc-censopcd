@@ -315,3 +315,48 @@ h2{
     }
     
 }
+
+/* Estilo para o botão de status */
+.status-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: transparent;
+    color: #38B1FF; /* Cor do texto */
+    border: 2px solid #38B1FF;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease;
+    opacity: 0.8;
+}
+
+/* Efeito ao passar o mouse (hover) */
+.status-btn:hover {
+    background-color: #38B1FF;
+    color: white;
+    opacity: 1;
+    transform: scale(1.05); /* Aumenta um pouco o tamanho */
+}
+
+/* Estilo do texto do status */
+.status-text {
+    display: inline-block;
+}
+
+/* Estilo para tooltips (informações quando passar o mouse) */
+.status-btn[title]:hover::after {
+    content: attr(title);
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    z-index: 10;
+}
