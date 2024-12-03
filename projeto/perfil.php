@@ -45,17 +45,22 @@ $conn->close();
     <meta charset="UTF-8">
     <title>CensoPCD+</title>
     <link rel="icon" href="logos/logofundoinvisivel.ico" type="image/x-icon">
-    <link rel="stylesheet" href="perfil.css">
+    
+    <!-- Carregar o CSS dinâmico com base no tema -->
+    <link rel="stylesheet" href="perfil.css" id="theme-css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <script>
         // Função para alternar entre os temas
         function toggleTheme(theme) {
             if (theme === 'dark') {
                 document.body.classList.add('dark-theme');
                 document.body.classList.remove('light-theme');
+                document.getElementById('theme-css').setAttribute('href', 'perfil_escuro.css'); // Carregar o CSS escuro
             } else {
                 document.body.classList.add('light-theme');
                 document.body.classList.remove('dark-theme');
+                document.getElementById('theme-css').setAttribute('href', 'perfil.css'); // Carregar o CSS claro
             }
             // Armazenar a preferência do tema no LocalStorage
             localStorage.setItem('theme', theme);
