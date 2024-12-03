@@ -56,7 +56,7 @@
 <nav class="sidebar" id="sidebar">
     <ul class="sidebarul">
         <li class="sidebarli">
-            <a href="pagina_principal.php" class="sidebar-a"><i class="fas fa-home"></i> Incício</a>
+            <a href="pagina_principal.php" class="sidebar-a"><i class="fas fa-home"></i> Incío</a>
         </li>
         <li class="sidebarli">
             <a href="perfil.php" class="sidebar-a"><i class="fas fa-user"></i> Perfil </a>
