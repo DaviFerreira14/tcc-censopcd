@@ -1,4 +1,4 @@
-/* perfil_escuro.css */
+/* perfil.css */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -14,7 +14,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #38B1FF; /* Azul mais escuro para o tema escuro */
+    background-color: #38B1FF; 
     color: white;
     padding: 31px;
     width: 100%;
@@ -54,33 +54,48 @@ header {
     margin-right: 15px;
 }
 
-/* Fim do Header */
+/*Fim da Header*/
 
-/* Sidebar */
-.sidebar {
+/*Sidebar*/
+*{
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+.header-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    flex-grow: 1; 
+}
+
+.sidebar{
     position: fixed;
     width: 253px;
     height: 100%;
     left: 0;
-    background: #1e1e1e; /* Fundo escuro */
+    background: #1e1e1e;
     border-right: 1px solid #444;
     margin-top: 112px;
 }
 
-.sidebar .sidebarul {
-    background: #1e1e1e; /* Fundo escuro */
+.sidebar .sidebarul{
+    background: #1e1e1e;
     height: 100%;
     width: 100%;
     list-style: none;
 }
 
-.sidebar .sidebarul .sidebarli {
+.sidebar .sidebarul .sidebarli{
     line-height: 60px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.sidebar .sidebarul .sidebarli .sidebar-a {
-    color: #e0e0e0; /* Texto claro */
+.sidebar .sidebarul .sidebarli .sidebar-a{
+    color: #e0e0e0;
     text-decoration: none;
     font-size: 18px;
     padding-left: 40px;
@@ -90,179 +105,201 @@ header {
     border-left: 3px solid transparent;
 }
 
-.sidebar .sidebarul .sidebarli .sidebar-a:hover {
-    color: #38B1FF; /* Destaque na cor azul */
-    background: #333333; /* Fundo mais escuro ao passar o mouse */
+.sidebar .sidebarul .sidebarli .sidebar-a:hover{
+    color: #38B1FF;
+    background: #333333;
     border-left-color: #38B1FF;
 }
 
-.sidebar .sidebarul .sidebarul {
+.sidebar .sidebarul .sidebarul{
     position: static;
     display: none;
 }
 
-.sidebar .sidebarul .sidebarul .sidebarli {
+.sidebar .sidebarul .sidebarul .sidebarli{
     line-height: 42px;
     border-bottom: none;
 }
 
-.sidebar .sidebarul .sidebarul .sidebarli .sidebar-a {
+.sidebar .sidebarul .sidebarul .sidebarli .sidebar-a{
     font-size: 17px;
     color: #007bff;
     padding-left: 80px;
 }
 
-.sidebar .sidebarul .sidebarul .sidebarli .sidebar-a:hover {
+.sidebar .sidebarul .sidebarul .sidebarli .sidebar-a:hover{
     color: #38B1FF;
-    background: #333333; /* Fundo escuro */
+    background: #333333;
 }
 
-/* #fundo - item ativo */
-#fundo {
+#fundo{
     color: #38B1FF;
     background: #444;
     border-left: 3px solid transparent;
     border-left-color: #38B1FF;
 }
-/* Fim da Sidebar */
+/*fim da Sidebar*/
 
 main {
     margin-left: 650px; /* Compensa a largura da sidebar */
     padding: 20px;
     flex-grow: 1;
-    background-color: #181818; /* Fundo escuro */
 }
 
-main h1 {
+main h1{
     margin-left: 44px;
     margin-top: 47px;
-    color: #e0e0e0; /* Texto claro */
 }
 
 .profile-info {
     border: 1px solid #444;
     padding: 15px;
     border-radius: 5px;
-    background-color: #2c2c2c; /* Fundo mais escuro */
-    max-width: 300px;
-    margin: 100px auto 0 auto;
-    text-align: left;
-    margin-left: 340px;
+    background-color: #2c2c2c;
+    max-width: 300px; /* Largura máxima da div */
+    margin: 100px auto 0 auto; /* Centraliza horizontalmente e ajusta a margem superior */
+    text-align: left; /* Alinha o texto à esquerda */
+    margin-left:340px;
 }
+
 
 .profile-info p {
-    margin: 35px 35px;
-    color: #e0e0e0; /* Texto claro */
+    margin: 35px 35px; /* Margem entre os parágrafos */
 }
 
-.user {
+.user{
     margin-top: 15px;
     margin-left: 115px;
 }
 
 .profile-info strong {
-    font-weight: bold;
-    color: #e0e0e0; /* Títulos em texto claro */
+    font-weight: bold; /* Destacar o texto forte */
+    color: #e0e0e0; /* Cor azul para os títulos dos campos */
 }
 
 .profile-info p:last-child {
-    margin-bottom: 15;
+    margin-bottom: 15; /* Remove a margem inferior do último parágrafo */
 }
 
 .profile-info p:first-child {
-    margin-top: 15;
+    margin-top: 15; /* Remove a margem superior do primeiro parágrafo */
 }
 
-.btn-trocar-senha,
+.header-menu a i {
+    font-size: 18px; /* Tamanho da seta */
+    margin-right: 8px; /* Espaço entre a seta e o link, se necessário */
+    color: white; /* Cor da seta */
+}
+
+.header-menu a {
+    display: flex;
+    align-items: center;
+}
+
+.btn-trocar-senha {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #007bff; /* Cor de fundo */
+    color: white; /* Cor do texto */
+    text-decoration: none; /* Sem underline */
+    border-radius: 5px; /* Bordas arredondadas */
+    margin-left: 347px;
+}
+
 .btn-trocar-endereco {
     display: inline-block;
     margin: 10px;
     padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
+    background-color: #007bff; /* Cor de fundo */
+    color: white; /* Cor do texto */
+    text-decoration: none; /* Sem underline */
+    border-radius: 5px; /* Bordas arredondadas */
+
 }
 
-.btn-trocar-senha:hover,
+.btn-trocar-senha:hover {
+    background-color: #0056b3; /* Cor de fundo ao passar o mouse */
+}
+
 .btn-trocar-endereco:hover {
-    background-color: #0056b3;
+    background-color: #0056b3; /* Cor de fundo ao passar o mouse */
 }
 
-/* Ajustes para Responsividade */
+/* Ajustes responsivos para telas menores */
 @media (max-width: 1024px) {
     .sidebar {
-        width: 200px;
+        width: 200px; /* Reduz a largura da sidebar */
     }
 
     main {
-        margin-left: 220px;
+        margin-left: 220px; /* Ajusta o conteúdo principal para se alinhar à sidebar reduzida */
     }
 
     .profile-info {
-        margin-left: 20px;
+        margin-left: 20px; /* Ajusta a posição da informação do perfil */
         margin-right: 20px;
     }
     .btn-trocar-senha,
     .btn-trocar-endereco {
-        margin: 10px auto;
-        width: 90%;
+        margin: 10px auto; /* Centraliza os botões */
+        width: 90%; /* Ajusta a largura dos botões */
         text-align: center;
     }
 }
 
 @media (max-width: 768px) {
     header {
-        flex-wrap: wrap;
+        flex-wrap: wrap; /* Permite que os elementos se ajustem em várias linhas */
         padding: 20px;
     }
 
     .header-title {
-        font-size: 18px;
-        text-align: center;
-        flex-grow: unset;
-        width: 100%;
+        font-size: 18px; /* Reduz o tamanho do título */
+        text-align: center; /* Centraliza o título */
+        flex-grow: unset; /* Remove o crescimento flexível */
+        width: 100%; /* Ocupa 100% da largura */
     }
 
     .logo {
-        margin: auto;
+        margin: auto; /* Centraliza o logo horizontalmente */
     }
 
     .sidebar {
-        width: 100px;
+        width: 100px; /* Sidebar mais estreita */
     }
 
     .sidebar .sidebarul .sidebarli .sidebar-a {
-        font-size: 14px;
+        font-size: 14px; /* Reduz o tamanho do texto */
         padding-left: 20px;
     }
 
     main {
-        margin-left: 120px;
+        margin-left: 120px; /* Ajusta o conteúdo principal */
     }
 
     .profile-info {
-        margin: 10px auto;
-        width: 90%;
+        margin: 10px auto; /* Margens automáticas para centralizar */
+        width: 90%; /* Ocupa quase toda a largura */
     }
 
     .profile-info img.user {
-        width: 80px;
+        width: 80px; /* Reduz o tamanho da imagem do usuário */
         height: auto;
-        margin-left: calc(50% - 40px);
+        margin-left: calc(50% - 40px); /* Centraliza horizontalmente */
     }
     
     .btn-trocar-senha,
     .btn-trocar-endereco {
-        margin: 10px auto;
-        width: 90%;
+        margin: 10px auto; /* Centraliza os botões */
+        width: 90%; /* Ajusta a largura dos botões */
         text-align: center;
     }
 }
 
 @media (max-width: 480px) {
     header {
-        flex-direction: column;
+        flex-direction: column; /* Header em coluna */
         align-items: center;
         text-align: center;
     }
@@ -272,11 +309,18 @@ main h1 {
     }
 
     .sidebar {
-        display: none;
+        display: none; /* Oculta a sidebar em telas muito pequenas */
     }
 
     main {
-        margin-left: 0;
+        margin-left: 0; /* Remove a margem lateral */
+    }
+
+    .btn-trocar-senha,
+    .btn-trocar-endereco {
+        margin: 10px auto; /* Centraliza os botões */
+        width: 90%; /* Ajusta a largura dos botões */
+        text-align: center;
     }
 
     .profile-info {
@@ -285,6 +329,37 @@ main h1 {
     }
 
     .profile-info p {
-        font-size: 14px;
+        font-size: 14px; /* Reduz o tamanho do texto */
     }
+}
+
+/* Estilo do Dropdown */
+.dropdown-content {
+    color: white;
+    display: none;
+    position: absolute;
+    background-color: #333333; /* Fundo escuro para o dropdown */
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3); /* Sombra mais sutil */
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.dropdown-content a {
+    color: white !important; /* Texto branco para o modo escuro */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    background-color: #333333; /* Fundo do item do dropdown */
+    border-bottom: 1px solid #444444; /* Separador sutil entre itens */
+}
+
+.dropdown-content a:hover {
+    background-color: #292929 !important; /* Cor de fundo quando o item é hover */
+    color: #ffffff; /* Cor azul para o texto ao passar o mouse */
+}
+
+/* Exibir o dropdown quando for ativado */
+.show {
+    display: block;
 }
