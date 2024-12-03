@@ -1,6 +1,10 @@
 <?php
 session_start();
 
+// Verifica o tema salvo na sessão ou cookie e inclui o CSS apropriado
+$tema = isset($_SESSION['tema']) ? $_SESSION['tema'] : (isset($_COOKIE['tema']) ? $_COOKIE['tema'] : 'light');
+$cssTema = ($tema === 'dark') ? 'trocar_senha_escuro.css' : 'trocar_senha.css';
+
 // Verifica se o usuário está logado
 if (!isset($_SESSION['usuario_id'])) {
     header("Location: index.php");
@@ -57,7 +61,7 @@ $conn->close();
     <meta charset="UTF-8">
     <title>CensoPCD+</title>
     <link rel="icon" href="logos/logofundoinvisivel.ico" type="image/x-icon"> <!-- ícone da aba -->
-    <link rel="stylesheet" href="trocar_senha.css"> <!-- Link para o CSS específico -->
+    <link rel="stylesheet" href="<?php echo $cssTema; ?>"> <!-- Link para o CSS específico -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>

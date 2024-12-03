@@ -1,0 +1,305 @@
+/* trocar_senha_escuro.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+    background-color: #121212; /* Cor de fundo escura */
+    color: #e0e0e0; /* Cor do texto clara */
+}
+
+/*Header*/
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #38B1FF; /* Cor de fundo do header escura */
+    color: #e0e0e0; /* Cor do texto clara */
+    padding: 31px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.logo {
+    height: 50px; 
+    margin-right: 15px;
+}
+
+.header-menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.header-menu li {
+    margin: 0 35px;
+}
+
+.header-menu a {
+    color: #e0e0e0; /* Cor dos links clara */
+    text-decoration: none;
+}
+
+.header-menu a:hover {
+    text-decoration: underline; 
+}
+
+.header-menu a i {
+    font-size: 18px;
+    margin-right: 15px;
+}
+
+/*Fim da Header*/
+
+/*Sidebar*/
+* {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+.header-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    flex-grow: 1; 
+}
+
+.sidebar {
+    position: fixed;
+    width: 253px;
+    height: 100%;
+    left: 0;
+    background: #2c2c2c; /* Cor de fundo escura */
+    border-right: 1px solid #444; /* Cor da borda da sidebar */
+    margin-top: 112px;
+}
+
+.sidebar .sidebarul {
+    background: #2c2c2c;
+    height: 100%;
+    width: 100%;
+    list-style: none;
+}
+
+.sidebar .sidebarul .sidebarli {
+    line-height: 60px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Borda clara e sutil */
+}
+
+.sidebar .sidebarul .sidebarli .sidebar-a {
+    color: #e0e0e0; /* Cor do texto clara */
+    text-decoration: none;
+    font-size: 18px;
+    padding-left: 40px;
+    font-weight: 500;
+    display: block;
+    width: 100%;
+    border-left: 3px solid transparent;
+}
+
+.sidebar .sidebarul .sidebarli .sidebar-a:hover {
+    color: #38B1FF; /* Cor de destaque */
+    background: #444; /* Cor de fundo de destaque */
+    border-left-color: #38B1FF; /* Cor da borda de destaque */
+}
+
+.sidebar .sidebarul .sidebarul {
+    position: static;
+    display: none;
+}
+
+.sidebar .sidebarul .sidebarul .sidebarli {
+    line-height: 42px;
+    border-bottom: none;
+}
+
+.sidebar .sidebarul .sidebarul .sidebarli .sidebar-a {
+    font-size: 17px;
+    color: #007bff; /* Cor de destaque dos subitens */
+    padding-left: 80px;
+}
+
+.sidebar .sidebarul .sidebarul .sidebarli .sidebar-a:hover {
+    color: #38B1FF; /* Cor de destaque ao passar o mouse */
+    background: #444; /* Cor de fundo de destaque */
+}
+
+#fundo {
+    color: #38B1FF; /* Cor de destaque */
+    background: #444; /* Cor de fundo de destaque */
+    border-left: 3px solid transparent;
+    border-left-color: #38B1FF; /* Cor da borda de destaque */
+}
+/*fim da Sidebar*/
+
+main {
+    margin-left: 150px; /* Compensa a largura da sidebar */
+    padding: 20px;
+    flex-grow: 1;
+    margin-top: 250px;
+    margin-left: 180px;
+    border-radius: 8px; /* Borda arredondada */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin: 10px 0 5px;
+    color: #e0e0e0; /* Cor do texto clara */
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+input[type="password"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 600px;
+    border: 1px solid #444; /* Cor da borda */
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    background-color: #333; /* Cor de fundo do input */
+    color: #e0e0e0; /* Cor do texto */
+}
+
+input[type="submit"] {
+    padding: 10px;
+    background-color: #38B1FF; /* Cor de fundo do botão */
+    color: white; /* Cor do texto do botão */
+    cursor: pointer;
+    width: 150px;
+    margin-left: 211px;
+    border: 1px solid #444; /* Cor da borda */
+    font-size: 16px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    margin-top: 19px;
+}
+
+input[type="submit"]:hover {
+    background-color: #309ae0; /* Cor de fundo do botão ao passar o mouse */
+}
+
+h1 {
+    text-align: center;
+    margin-left: 280px;
+    margin-top: 165px;
+}
+
+/* Ajustes responsivos para telas menores */
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 200px; /* Reduz a largura da sidebar */
+    }
+
+    main {
+        margin-left: 150px; /* Ajusta o conteúdo principal para se alinhar à sidebar reduzida */
+    }
+
+    .profile-info {
+        margin-left: 20px; /* Ajusta a posição da informação do perfil */
+        margin-right: 20px;
+    }
+    .btn-trocar-senha,
+    .btn-trocar-endereco {
+        margin: 10px auto; /* Centraliza os botões */
+        width: 90%; /* Ajusta a largura dos botões */
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-wrap: wrap; /* Permite que os elementos se ajustem em várias linhas */
+        padding: 20px;
+    }
+
+    .header-title {
+        font-size: 18px; /* Reduz o tamanho do título */
+        text-align: center; /* Centraliza o título */
+        flex-grow: unset; /* Remove o crescimento flexível */
+        width: 100%; /* Ocupa 100% da largura */
+    }
+
+    .logo {
+        margin: auto; /* Centraliza o logo horizontalmente */
+    }
+
+    .sidebar {
+        width: 100px; /* Sidebar mais estreita */
+    }
+
+    .sidebar .sidebarul .sidebarli .sidebar-a {
+        font-size: 14px; /* Reduz o tamanho do texto */
+        padding-left: 20px;
+    }
+
+    main {
+        margin-left: 120px; /* Ajusta o conteúdo principal */
+    }
+
+    .profile-info {
+        margin: 10px auto; /* Margens automáticas para centralizar */
+        width: 90%; /* Ocupa quase toda a largura */
+    }
+
+    .profile-info img.user {
+        width: 80px; /* Reduz o tamanho da imagem do usuário */
+        height: auto;
+        margin-left: calc(50% - 40px); /* Centraliza horizontalmente */
+    }
+    
+    .btn-trocar-senha,
+    .btn-trocar-endereco {
+        margin: 10px auto; /* Centraliza os botões */
+        width: 90%; /* Ajusta a largura dos botões */
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        flex-direction: column; /* Header em coluna */
+        align-items: center;
+        text-align: center;
+    }
+
+    .header-menu ul {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        display: none; /* Oculta a sidebar em telas muito pequenas */
+    }
+
+    main {
+        margin-left: 0; /* Remove a margem lateral */
+    }
+
+    .btn-trocar-senha,
+    .btn-trocar-endereco {
+        margin: 10px auto; /* Centraliza os botões */
+        width: 90%; /* Ajusta a largura dos botões */
+        text-align: center;
+    }
+
+    .profile-info {
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .profile-info p {
+        font-size: 14px; /* Reduz o tamanho do texto */
+    }
+}

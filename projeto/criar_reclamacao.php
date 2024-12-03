@@ -1,6 +1,10 @@
 <?php
 session_start();
 
+// Verifica o tema salvo na sessão ou cookie e inclui o CSS apropriado
+$tema = isset($_SESSION['tema']) ? $_SESSION['tema'] : (isset($_COOKIE['tema']) ? $_COOKIE['tema'] : 'light');
+$cssTema = ($tema === 'dark') ? 'criar_reclamacao_escuro.css' : 'criar_reclamacao.css';
+
 // Verifica se o usuário está logado
 if (!isset($_SESSION['usuario_id'])) {
     header("Location: index.php");
@@ -70,7 +74,7 @@ $conn->close();
     <meta charset="UTF-8">
     <title>CensoPCD+</title>
     <link rel="icon" href="logos/logofundoinvisivel.ico" type="image/x-icon">
-    <link rel="stylesheet" href="criar_reclamacao.css">
+    <link rel="stylesheet" href="<?php echo $cssTema; ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         .microphone-btn {
