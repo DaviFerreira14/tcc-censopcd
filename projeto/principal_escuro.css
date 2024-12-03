@@ -5,7 +5,7 @@ body {
     padding: 0;
     display: flex;
     height: 100vh;
-    background-color: #121212; /* Cor de fundo para modo escuro */
+    background-color: #121212 ; /* Cor de fundo para modo escuro */
     color: #e0e0e0; /* Cor do texto para contraste */
 }
 
@@ -14,7 +14,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #1e1e1e; /* Cor de fundo do header */
+    background-color: #38B1FF; /* Cor de fundo do header */
     color: #e0e0e0;
     padding: 31px;
     width: 100%;
@@ -110,6 +110,13 @@ header {
 .sidebar .sidebarul .sidebarul .sidebarli .sidebar-a:hover {
     color: #38B1FF;
     background: #333;
+}
+
+#fundo{
+    color: #38B1FF;
+    background: #444;
+    border-left: 3px solid transparent;
+    border-left-color: #38B1FF;
 }
 
 /* Fim da Sidebar */
@@ -271,4 +278,35 @@ main {
     color: white;
     opacity: 1;
     transform: scale(1.05);
+}
+
+/* Estilo do Dropdown */
+.dropdown-content {
+    color: white;
+    display: none;
+    position: absolute;
+    background-color: #333333; /* Fundo escuro para o dropdown */
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3); /* Sombra mais sutil */
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.dropdown-content a {
+    color: white !important; /* Texto branco para o modo escuro */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    background-color: #333333; /* Fundo do item do dropdown */
+    border-bottom: 1px solid #444444; /* Separador sutil entre itens */
+}
+
+.dropdown-content a:hover {
+    background-color: #292929 !important; /* Cor de fundo quando o item é hover */
+    color: #ffffff; /* Cor azul para o texto ao passar o mouse */
+}
+
+/* Exibir o dropdown quando for ativado */
+.show {
+    display: block;
 }

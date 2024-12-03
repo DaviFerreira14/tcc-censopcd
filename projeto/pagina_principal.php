@@ -87,6 +87,7 @@ $conn->close();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="icon" href="logos/logofundoinvisivel.ico" type="image/x-icon">
     <link rel="stylesheet" href="principal.css">
+    <link id="theme-css" rel="stylesheet" href="principal_escuro.css">
     <script>
         function confirmarExclusao() {
             return confirm("Tem certeza que deseja excluir esta reclamação?");
@@ -94,12 +95,20 @@ $conn->close();
 
         // Função para alternar entre os temas
         function toggleTheme(theme) {
+            const themeLink = document.getElementById('theme-css');
+            if (!themeLink) {
+                console.error('Elemento de tema não encontrado.');
+                return;
+            }
+
             if (theme === 'dark') {
                 document.body.classList.add('dark-theme');
                 document.body.classList.remove('light-theme');
+                themeLink.setAttribute('href', 'principal_escuro.css'); // Carregar o CSS escuro
             } else {
                 document.body.classList.add('light-theme');
                 document.body.classList.remove('dark-theme');
+                themeLink.setAttribute('href', 'principal.css'); // Carregar o CSS claro
             }
             // Armazenar a preferência do tema no LocalStorage
             localStorage.setItem('theme', theme);
@@ -113,8 +122,10 @@ $conn->close();
 
         // Função para alternar o dropdown
         function toggleDropdown() {
-            var dropdown = document.getElementById("themeDropdown");
-            dropdown.classList.toggle("show");
+            const dropdown = document.getElementById("themeDropdown");
+            if (dropdown) {
+                dropdown.classList.toggle("show");
+            }
         }
     </script>
 

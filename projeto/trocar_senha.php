@@ -66,7 +66,7 @@ $conn->close();
         <div class="header-title">CensoPCD+</div>
         <nav class="header-menu">
             <ul>
-                <li><a href="pagina_principal.php"><i class="fas fa-arrow-left"></i></a></li>
+                <li><a href="perfil.php"><i class="fas fa-arrow-left"></i></a></li>
             </ul>
         </nav>
     </header>
