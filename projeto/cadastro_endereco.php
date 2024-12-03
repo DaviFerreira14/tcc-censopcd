@@ -67,27 +67,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CensoPCD+</title>
-    <link rel="stylesheet" href="cadastro_endereco.css">
+    <!-- Aqui o link do CSS que será alterado dinamicamente -->
+    <link id="themeStylesheet" rel="stylesheet" href="cadastro_endereco.css">
     <link rel="icon" href="logos/logofundoinvisivel.ico" type="image/x-icon"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
 <body>
-    
-
     <!-- Cabeçalho/Header -->
-        <header>
+    <header>
         <img src="logos/logoblue.jpg" alt="Logo" class="logo">
         <div class="header-title">CensoPCD+</div>
         <nav class="header-menu">
             <ul class="header-ul">
-            <li><a href="pagina_principal.php"><i class="fas fa-arrow-left"></i></a></li>
+                <li><a href="pagina_principal.php"><i class="fas fa-arrow-left"></i></a></li>
             </ul>
         </nav>
-        </header>
-        
-    
+    </header>
+
     <h1>Cadastrar Endereço</h1>
 
     <!-- Exibir mensagens -->
@@ -125,6 +123,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <button type="submit">Cadastrar Endereço</button>
     </form>
 
+    <!-- Script para buscar as informações do CEP -->
     <script>
         $('#buscar').click(function() {
             var cep = $('#cep').val().replace(/\D/g, '');
@@ -151,18 +150,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 }
             });
         });
+
+        // Carregar o tema salvo no localStorage
+        $(document).ready(function() {
+            var savedTheme = localStorage.getItem('theme') || 'light'; // Se não houver tema salvo, 'light' será usado
+            if (savedTheme === 'dark') {
+                $('#themeStylesheet').attr('href', 'cadastro_endereco_escuro.css'); // Alterar para o tema escuro
+            }
+        });
     </script>
 
     <!-- Codigo Vlibras -->
     <div vw class="enabled">
         <div vw-access-button class="active"></div>
         <div vw-plugin-wrapper>
-          <div class="vw-plugin-top-wrapper"></div>
+            <div class="vw-plugin-top-wrapper"></div>
         </div>
-      </div>
+    </div>
     <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
     <script>
-      new window.VLibras.Widget('https://vlibras.gov.br/app');
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
     </script>
 </body>
 </html>

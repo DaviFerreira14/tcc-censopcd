@@ -1,0 +1,257 @@
+/* Modo escuro */
+
+/* Body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212; /* Cor de fundo escura */
+    color: #e0e0e0; /* Cor de texto clara */
+    margin: 0;
+    padding: 20px;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #38B1FF; /* Cor de fundo azul mais escuro */
+    color: white;
+    padding: 31px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.logo {
+    height: 50px;
+    margin-right: 15px;
+}
+
+.header-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    flex-grow: 1;
+    color: #ffffff;
+}
+
+.header-menu .header-ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.header-menu .header-li {
+    margin: 0 35px;
+}
+
+.header-menu .header-a {
+    color: white;
+    text-decoration: none;
+}
+
+.header-menu .header-a:hover {
+    text-decoration: underline;
+}
+
+.header-menu .header-a i {
+    font-size: 18px;
+    margin-right: 0;
+}
+
+.header-menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.header-menu li {
+    margin: 0 35px;
+}
+
+.header-menu a {
+    color: white;
+    text-decoration: none;
+}
+
+.header-menu a:hover {
+    text-decoration: underline;
+}
+
+.header-menu a i {
+    font-size: 18px;
+    margin-right: 15px;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    width: 253px;
+    height: 100%;
+    left: 0;
+    background: #181818; /* Cor de fundo escuro */
+    border-right: 1px solid #333;
+    margin-top: 91px;
+}
+
+.sidebar .sidebarul {
+    background: #181818;
+    height: 100%;
+    width: 100%;
+    list-style: none;
+}
+
+.sidebar .sidebarul .sidebarli {
+    line-height: 60px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar .sidebarul .sidebarli .sidebar-a {
+    color: #e0e0e0;
+    text-decoration: none;
+    font-size: 18px;
+    padding-left: 40px;
+    font-weight: 500;
+    display: block;
+    width: 100%;
+    border-left: 3px solid transparent;
+}
+
+.sidebar .sidebarul .sidebarli .sidebar-a:hover {
+    color: #38B1FF;
+    background: #333;
+    border-left-color: #38B1FF;
+}
+
+.sidebar .sidebarul .sidebarul {
+    position: static;
+    display: none;
+}
+
+.sidebar .sidebarul .sidebarul .sidebarli {
+    line-height: 42px;
+    border-bottom: none;
+}
+
+.sidebar .sidebarul .sidebarul .sidebarli .sidebar-a {
+    font-size: 17px;
+    color: #007bff;
+    padding-left: 80px;
+}
+
+.sidebar .sidebarul .sidebarul .sidebarli .sidebar-a:hover {
+    color: #38B1FF;
+    background: #333;
+}
+
+/* Fundo de item ativo */
+#fundo {
+    color: #38B1FF;
+    background: #333;
+    border-left: 3px solid transparent;
+    border-left-color: #38B1FF;
+}
+
+/* Títulos e formatação geral */
+h1 {
+    color: #e0e0e0;
+    text-align: center;
+    margin-top: 125px;
+}
+
+/* Formulário */
+form {
+    background: #2a2a2a; /* Fundo mais escuro para o formulário */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    width: 600px;
+    margin: 0 auto;
+    margin-top: 15px;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+    color: #e0e0e0;
+}
+
+input[type="text"] {
+    width: calc(100% - 10px);
+    padding: 10px;
+    border: 1px solid #444;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    background-color: #333;
+    color: #e0e0e0;
+}
+
+button {
+    background-color: #38B1FF;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: calc(100% - 10px);
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#buscar {
+    background-color: #38B1FF;
+}
+
+#buscar:hover {
+    background-color: #0056b3;
+}
+
+/* Mensagens */
+.message {
+    text-align: center;
+    margin: 15px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Media Queries */
+@media (max-width: 480px) {
+    header {
+        padding: 8px;
+        height: 70px;
+    }
+
+    .header-title {
+        font-size: 14px;
+    }
+
+    .logo {
+        height: 25px;
+    }
+
+    .sidebar {
+        width: 150px;
+    }
+
+    form {
+        width: 95%;
+    }
+}

@@ -1,0 +1,293 @@
+/* sobre_escuro.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+    background-color: #121212; /* Fundo escuro */
+    color: white; /* Texto branco */
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #38B1FF; /* Azul mais escuro para o tema escuro */
+    color: white;
+    padding: 31px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.logo {
+    height: 50px; 
+    margin-right: 15px;
+}
+
+.header-menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.header-menu li {
+    margin: 0 35px;
+}
+
+.header-menu a {
+    color: white;
+    text-decoration: none;
+}
+
+.header-menu a:hover {
+    text-decoration: underline; 
+}
+
+.header-menu a i {
+    font-size: 18px;
+    margin-right: 15px;
+}
+
+/* Sidebar */
+* {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+.header-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    flex-grow: 1; 
+}
+
+.sidebar {
+    position: fixed;
+    width: 253px;
+    height: 100%;
+    left: 0;
+    background: #333333; /* Cor escura de fundo da sidebar */
+    border-right: 1px solid #555555; /* Borda mais suave */
+    margin-top: 112px;
+}
+
+.sidebar .sidebarul {
+    background: #333333;
+    height: 100%;
+    width: 100%;
+    list-style: none;
+}
+
+.sidebar .sidebarul .sidebarli {
+    line-height: 60px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar .sidebarul .sidebarli .sidebar-a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+    padding-left: 40px;
+    font-weight: 500;
+    display: block;
+    width: 100%;
+    border-left: 3px solid transparent;
+}
+
+.sidebar .sidebarul .sidebarli .sidebar-a:hover {
+    color: #1a73e8; /* Azul para destaque no tema escuro */
+    background: #444444; /* Cor de fundo mais suave no hover */
+    border-left-color: #1a73e8;
+}
+
+.sidebar .sidebarul .sidebarul {
+    position: static;
+    display: none;
+}
+
+.sidebar .sidebarul .sidebarul .sidebarli {
+    line-height: 42px;
+    border-bottom: none;
+}
+
+.sidebar .sidebarul .sidebarul .sidebarli .sidebar-a {
+    font-size: 17px;
+    color: #007bff;
+    padding-left: 80px;
+}
+
+.sidebar .sidebarul .sidebarul .sidebarli .sidebar-a:hover {
+    color: #1a73e8;
+    background: #444444;
+}
+
+#fundo {
+    color: #1a73e8;
+    background: #444444;
+    border-left: 3px solid transparent;
+    border-left-color: #1a73e8;
+}
+/* Fim da Sidebar */
+
+/* Content */
+.content {
+    margin-left: 260px;
+    margin-top: 160px;
+    padding: 20px;
+    flex-grow: 1;
+    background-color: #121212; /* Fundo escuro */
+}
+
+.faq {
+    margin-left: 35px;
+    margin-right: 65px
+    margin-top: 50px;
+    border: 1px solid #555555; /* Borda mais suave no tema escuro */
+    padding: 35px;
+    border-radius: 5px;
+    background-color: #222222; /* Fundo escuro para o conteúdo */
+}
+
+.faq h3 {
+    margin-bottom: 10px;
+}
+
+/* Tornar o layout responsivo */
+
+/* Geral - Reduzir o tamanho do header e sidebar em telas menores */
+@media screen and (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+    }
+
+    .header-title {
+        font-size: 18px;
+        text-align: left;
+        margin-bottom: 10px;
+    }
+
+    .logo {
+        height: 40px;
+    }
+
+    .header-menu ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header-menu li {
+        margin: 5px 0;
+    }
+
+    .sidebar {
+        width: 200px;
+        margin-top: 70px; 
+    }
+
+    .sidebar .sidebarul .sidebarli .sidebar-a {
+        font-size: 16px;
+        padding-left: 20px;
+    }
+
+    .content {
+        margin-left: 210px; /* Sidebar menor */
+        margin-top: 100px; /* Header menor */
+        padding: 15px;
+    }
+}
+
+/* Telas muito pequenas - Exibir layout em uma coluna */
+@media screen and (max-width: 480px) {
+    header {
+        padding: 10px;
+    }
+
+    .header-menu ul {
+        display: none; /* Esconder o menu se necessário em telas muito pequenas */
+    }
+
+    .sidebar {
+        width: 100px;
+    }
+
+    .sidebar .sidebarul .sidebarli .sidebar-a {
+        font-size: 14px;
+        padding-left: 10px;
+    }
+
+    .content {
+        margin-left: 110px;
+        margin-top: 90px;
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .faq {
+        margin-left: 15px;
+        margin-right: 15px;
+        padding: 15px;
+    }
+
+    .faq h3 {
+        font-size: 16px;
+    }
+}
+
+/* Ajustes para telas grandes */
+@media screen and (min-width: 1024px) {
+    .content {
+        margin-left: 260px;
+        margin-top: 160px;
+        padding: 25px;
+    }
+
+    .faq {
+        margin-left: 50px;
+        margin-right: 50px;
+        padding: 40px;
+    }
+}
+
+/* sobre_escuro.css */
+
+/* Estilo do Dropdown */
+.dropdown-content {
+    color: white;
+    display: none;
+    position: absolute;
+    background-color: #333333; /* Fundo escuro para o dropdown */
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3); /* Sombra mais sutil */
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.dropdown-content a {
+    color: white !important; /* Texto branco para o modo escuro */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    background-color: #333333; /* Fundo do item do dropdown */
+    border-bottom: 1px solid #444444; /* Separador sutil entre itens */
+}
+
+.dropdown-content a:hover {
+    background-color: #292929 !important; /* Cor de fundo quando o item é hover */
+    color: #ffffff; /* Cor azul para o texto ao passar o mouse */
+}
+
+/* Exibir o dropdown quando for ativado */
+.show {
+    display: block;
+}

@@ -4,18 +4,20 @@
     <meta charset="UTF-8">
     <title>Sobre o CensoPCD+</title>
     <link rel="icon" href="logos/logofundoinvisivel.ico" type="image/x-icon"> <!-- ícone da aba -->
-    <link rel="stylesheet" href="sobre.css"> <!-- Link para o CSS específico -->
+    <link rel="stylesheet" id="themeStylesheet" href="sobre.css"> <!-- Link para o CSS específico, ID para facilitar a troca -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Link para ícones -->
     <script>
         // Função para alternar entre os temas
         function toggleTheme(theme) {
+            // Carregar o CSS correspondente ao tema
+            const themeStylesheet = document.getElementById('themeStylesheet');
+            
             if (theme === 'dark') {
-                document.body.classList.add('dark-theme');
-                document.body.classList.remove('light-theme');
+                themeStylesheet.setAttribute('href', 'sobre_escuro.css'); // Mudar para o CSS escuro
             } else {
-                document.body.classList.add('light-theme');
-                document.body.classList.remove('dark-theme');
+                themeStylesheet.setAttribute('href', 'sobre.css'); // Mudar para o CSS claro
             }
+
             // Armazenar a preferência do tema no LocalStorage
             localStorage.setItem('theme', theme);
         }
