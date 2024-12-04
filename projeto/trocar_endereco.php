@@ -130,55 +130,70 @@ $conn->close();
     </div>
 
     <script>
-        $(document).ready(function() {
-            $('#btnBuscar').click(function() {
-                const cep = $('#cep').val().replace(/\D/g, '');
-                if (cep.length === 8) {
-                    $('#cep').val(cep.slice(0, 5) + '-' + cep.slice(5)); // Formata o CEP com o traço
-                    $.get(`https://viacep.com.br/ws/${cep}/json/`, function(data) {
-                        if (!data.erro) {
-                            $('#logradouro').val(data.logradouro);
-                            $('#bairro').val(data.bairro);
-                            $('#cidade').val(data.localidade);
-                            $('#estado').val(data.uf);
-                        } else {
-                            alert('CEP não encontrado!');
-                        }
-                    }).fail(function() {
-                        alert('Erro ao buscar informações do CEP.');
-                    });
-                } else {
-                    alert('CEP inválido!');
-                }
-            });
+    $(document).ready(function() {
+        // Formatar o CEP enquanto o usuário digita
+        $('#cep').on('input', function() {
+            let cep = $(this).val().replace(/\D/g, ''); // Remove qualquer caractere não numérico
 
-            $('#btnTrocarEndereco').click(function() {
-                const logradouro = $('#logradouro').val();
-                const bairro = $('#bairro').val();
-                const cidade = $('#cidade').val();
-                const estado = $('#estado').val();
-                const cep = $('#cep').val().replace(/\D/g, ''); // Captura o CEP sem traço
-                const usuario_id = <?php echo $usuario_id; ?>; // Passando o ID do usuário
-
-                if (logradouro && bairro && cidade && estado && cep) {
-                    $.post('trocar_endereco_action.php', {
-                        usuario_id: usuario_id,
-                        logradouro: logradouro,
-                        bairro: bairro,
-                        cidade: cidade,
-                        estado: estado,
-                        cep: cep // Inclui o CEP na requisição
-                    }, function(response) {
-                        alert(response.message);
-                        if (response.success) {
-                            window.location.href = 'pagina_principal.php'; // Redirecionar após sucesso
-                        }
-                    }, 'json');
-                } else {
-                    alert('Preencha todos os campos antes de trocar o endereço.');
-                }
-            });
+            // Limitar o CEP a 8 dígitos
+            if (cep.length <= 5) {
+                $(this).val(cep); // Apenas os primeiros 5 dígitos
+            } else if (cep.length <= 8) {
+                $(this).val(cep.slice(0, 5) + '-' + cep.slice(5, 8)); // Adiciona o traço entre os 5 primeiros e os 3 últimos
+            } else {
+                $(this).val(cep.slice(0, 8)); // Limita a 8 dígitos
+            }
         });
-    </script>
+
+        // Ação ao clicar no botão de buscar
+        $('#btnBuscar').click(function() {
+            const cep = $('#cep').val().replace(/\D/g, ''); // Remove qualquer caractere não numérico
+            if (cep.length === 8) {
+                $.get(`https://viacep.com.br/ws/${cep}/json/`, function(data) {
+                    if (!data.erro) {
+                        $('#logradouro').val(data.logradouro);
+                        $('#bairro').val(data.bairro);
+                        $('#cidade').val(data.localidade);
+                        $('#estado').val(data.uf);
+                    } else {
+                        alert('CEP não encontrado!');
+                    }
+                }).fail(function() {
+                    alert('Erro ao buscar informações do CEP.');
+                });
+            } else {
+                alert('CEP inválido! Certifique-se de digitar 8 dígitos.');
+            }
+        });
+
+        // Ação ao clicar no botão de trocar endereço
+        $('#btnTrocarEndereco').click(function() {
+            const logradouro = $('#logradouro').val();
+            const bairro = $('#bairro').val();
+            const cidade = $('#cidade').val();
+            const estado = $('#estado').val();
+            const cep = $('#cep').val().replace(/\D/g, ''); // Captura o CEP sem traço
+            const usuario_id = <?php echo $usuario_id; ?>; // Passando o ID do usuário
+
+            if (logradouro && bairro && cidade && estado && cep) {
+                $.post('trocar_endereco_action.php', {
+                    usuario_id: usuario_id,
+                    logradouro: logradouro,
+                    bairro: bairro,
+                    cidade: cidade,
+                    estado: estado,
+                    cep: cep // Inclui o CEP na requisição
+                }, function(response) {
+                    alert(response.message);
+                    if (response.success) {
+                        window.location.href = 'pagina_principal.php'; // Redirecionar após sucesso
+                    }
+                }, 'json');
+            } else {
+                alert('Preencha todos os campos antes de trocar o endereço.');
+            }
+        });
+    });
+</script>
 </body>
 </html>

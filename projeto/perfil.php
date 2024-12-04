@@ -25,6 +25,17 @@ if ($result->num_rows === 0) {
 $usuario = $result->fetch_assoc();
 $stmt->close();
 
+// Função para formatar o CEP
+function formatarCEP($cep) {
+    // Verifica se o CEP tem 8 dígitos
+    if (preg_match('/^\d{8}$/', $cep)) {
+        // Formata o CEP para o formato XXXXX-XXX
+        return substr($cep, 0, 5) . '-' . substr($cep, 5);
+    }
+    // Retorna o CEP original caso não tenha 8 dígitos
+    return $cep;
+}
+
 // Buscar informações de endereço do usuário
 $stmt = $conn->prepare("SELECT cep, logradouro, bairro, cidade, estado FROM enderecos WHERE usuario_id = ?");
 $stmt->bind_param("i", $usuario_id);
@@ -149,7 +160,7 @@ $conn->close();
             
             <?php if ($endereco): ?>
                 <h2>Endereço</h2>
-                <p><strong>CEP:</strong> <?php echo htmlspecialchars($endereco['cep']); ?></p>
+                <p><strong>CEP:</strong> <?php echo htmlspecialchars(formatarCEP($endereco['cep'])); ?></p>
                 <p><strong>Rua:</strong> <?php echo htmlspecialchars($endereco['logradouro']); ?></p>
                 <p><strong>Bairro:</strong> <?php echo htmlspecialchars($endereco['bairro']); ?></p>
                 <p><strong>Cidade:</strong> <?php echo htmlspecialchars($endereco['cidade']); ?></p>
