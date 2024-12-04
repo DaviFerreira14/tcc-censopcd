@@ -231,34 +231,43 @@ $conn->close();
         <h2>Suas Reclamações</h2>
         <?php if ($result->num_rows > 0): ?>
             <ul class="reclamacoes-lista">
-                <?php while ($reclamacao = $result->fetch_assoc()): ?>
-                    <li class="reclamacao-item">
-                        <div class="titulo-reclamacao">
-                            <strong>Título: <?php echo htmlspecialchars($reclamacao['titulo']); ?></strong>
-                            <span class="horario-reclamacao">
-                                <?php 
-                                    date_default_timezone_set('America/Sao_Paulo');
-                                    $data = new DateTime($reclamacao['data']);
-                                    echo $data->format('d/m/Y á\s H:i');
-                                ?>
-                            </span>
-                        </div>
-                        <div class="endereco-reclamacao">
-                            Endereço: <?php echo htmlspecialchars($reclamacao['endereco']); ?>
-                        </div>
-                        <br>
-                        Descrição: <span class="reclamacao-descricao"><?php echo nl2br(htmlspecialchars($reclamacao['descricao'])); ?></span><br>
-                        
-                        <div class="status-btn" title="Status da reclamação">
-                            <span class="status-text"><?php echo getStatusText($reclamacao['status_id']); ?></span>
-                        </div>
+            <?php while ($reclamacao = $result->fetch_assoc()): ?>
+    <li class="reclamacao-item">
+        <div class="titulo-reclamacao">
+            <strong>Título: <?php echo htmlspecialchars($reclamacao['titulo']); ?></strong>
+            <span class="horario-reclamacao">
+                <?php 
+                    date_default_timezone_set('America/Sao_Paulo');
+                    $data = new DateTime($reclamacao['data']);
+                    echo $data->format('d/m/Y á\s H:i');
+                ?>
+            </span>
+        </div>
+        <div class="endereco-reclamacao">
+            Endereço: <?php echo htmlspecialchars($reclamacao['endereco']); ?>
+        </div>
+        <br>
+        Descrição: <span class="reclamacao-descricao"><?php echo nl2br(htmlspecialchars($reclamacao['descricao'])); ?></span><br>
+        
+        <!-- Exibição da resposta -->
+        <?php if (!empty($reclamacao['resposta'])): ?>
+            <div class="resposta-reclamacao">
+                <strong>Resposta:</strong> <span><?php echo nl2br(htmlspecialchars($reclamacao['resposta'])); ?></span>
+            </div>
+        <?php endif; ?>
 
-                        <a href="?delete_id=<?php echo $reclamacao['id']; ?>" onclick="return confirmarExclusao();" class="btn-excluir" aria-label="Excluir reclamação">
-                            <i class="fas fa-trash-alt"></i>
-                        </a>
-                        <hr>
-                    </li>
-                <?php endwhile; ?>
+        <div class="status-btn" title="Status da reclamação">
+            <span class="status-text"><?php echo getStatusText($reclamacao['status_id']); ?></span>
+        </div>
+
+        <a href="?delete_id=<?php echo $reclamacao['id']; ?>" onclick="return confirmarExclusao();" class="btn-excluir" aria-label="Excluir reclamação">
+            <i class="fas fa-trash-alt"></i>
+        </a>
+        
+        <hr>
+    </li>
+<?php endwhile; ?>
+
             </ul>
         <?php else: ?>
             <p>Nenhuma reclamação encontrada com esse título.</p>
