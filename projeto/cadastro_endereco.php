@@ -16,58 +16,46 @@ $usuario_id = $_SESSION['usuario_id'];
 // Mensagem de feedback
 $message = '';
 
-// Verificar se o usuário já possui um endereço cadastrado
-$stmt = $conn->prepare("SELECT COUNT(*) FROM enderecos WHERE usuario_id = ?");
-$stmt->bind_param("i", $usuario_id);
-$stmt->execute();
-$stmt->bind_result($enderecoExiste);
-$stmt->fetch();
-$stmt->close();
+// Verificar se o formulário foi enviado
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $cep = $_POST['cep'];
+    $logradouro = $_POST['logradouro'];
+    $bairro = $_POST['bairro'];
+    $cidade = $_POST['cidade'];
+    $estado = $_POST['estado'];
 
-if ($enderecoExiste > 0) {
-    $message = "Você já possui um endereço cadastrado. Caso queira mudar, vá em 'Perfil' e em 'Trocar Endereço'.";
-} else {
-    // Verificar se o formulário foi enviado para cadastrar um novo endereço
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $cep = $_POST['cep'];
-        $logradouro = $_POST['logradouro'];
-        $bairro = $_POST['bairro'];
-        $cidade = $_POST['cidade'];
-        $estado = $_POST['estado'];
+    // Verificar se o usuário existe
+    $stmt = $conn->prepare("SELECT COUNT(*) FROM usuarios WHERE usuario_id = ?");
+    $stmt->bind_param("i", $usuario_id);
+    $stmt->execute();
+    $stmt->bind_result($userExists);
+    $stmt->fetch();
+    $stmt->close();
 
-        // Verificar se o usuário existe
-        $stmt = $conn->prepare("SELECT COUNT(*) FROM usuarios WHERE usuario_id = ?");
-        $stmt->bind_param("i", $usuario_id);
+    if ($userExists == 0) {
+        $message = "Usuário não encontrado!";
+    } else {
+        // Verificar se o CEP já está cadastrado para o usuário
+        $stmt = $conn->prepare("SELECT COUNT(*) FROM enderecos WHERE cep = ? AND usuario_id = ?");
+        $stmt->bind_param("si", $cep, $usuario_id);
         $stmt->execute();
-        $stmt->bind_result($userExists);
+        $stmt->bind_result($count);
         $stmt->fetch();
         $stmt->close();
 
-        if ($userExists == 0) {
-            $message = "Usuário não encontrado!";
+        if ($count > 0) {
+            $message = "Esse CEP já está cadastrado por você!";
         } else {
-            // Verificar se o CEP já está cadastrado para o usuário
-            $stmt = $conn->prepare("SELECT COUNT(*) FROM enderecos WHERE cep = ? AND usuario_id = ?");
-            $stmt->bind_param("si", $cep, $usuario_id);
-            $stmt->execute();
-            $stmt->bind_result($count);
-            $stmt->fetch();
-            $stmt->close();
+            // Inserir o endereço no banco de dados
+            $stmt = $conn->prepare("INSERT INTO enderecos (usuario_id, cep, logradouro, bairro, cidade, estado) VALUES (?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("isssss", $usuario_id, $cep, $logradouro, $bairro, $cidade, $estado);
 
-            if ($count > 0) {
-                $message = "Esse CEP já está cadastrado por você!";
+            if ($stmt->execute()) {
+                $message = "Endereço cadastrado com sucesso!";
             } else {
-                // Inserir o endereço no banco de dados
-                $stmt = $conn->prepare("INSERT INTO enderecos (usuario_id, cep, logradouro, bairro, cidade, estado) VALUES (?, ?, ?, ?, ?, ?)");
-                $stmt->bind_param("isssss", $usuario_id, $cep, $logradouro, $bairro, $cidade, $estado);
-
-                if ($stmt->execute()) {
-                    $message = "Endereço cadastrado com sucesso!";
-                } else {
-                    $message = "Erro ao cadastrar endereço: " . $stmt->error;
-                }
-                $stmt->close();
+                $message = "Erro ao cadastrar endereço: " . $stmt->error;
             }
+            $stmt->close();
         }
     }
 }
@@ -79,6 +67,7 @@ if ($enderecoExiste > 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CensoPCD+</title>
+    <!-- Aqui o link do CSS que será alterado dinamicamente -->
     <link id="themeStylesheet" rel="stylesheet" href="cadastro_endereco.css">
     <link rel="icon" href="logos/logofundoinvisivel.ico" type="image/x-icon"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -104,56 +93,49 @@ if ($enderecoExiste > 0) {
         <div class="message"><?php echo htmlspecialchars($message); ?></div>
     <?php endif; ?>
 
-    <?php if ($enderecoExiste == 0): ?>
-        <form method="POST" action="">
+    <form method="POST" action="">
+        <label for="cep">
+            <i class="fas fa-mail-bulk"></i> CEP:
+        </label>
+        <input type="text" id="cep" name="cep" required>
+        <button type="button" id="buscar">Buscar</button><br><br>
 
-            <label for="cep">
-                <i class="fas fa-mail-bulk"></i> CEP:
-            </label>
-            <input type="text" id="cep" name="cep" required>
-            <button type="button" id="buscar">Buscar</button><br><br>
+        <label for="logradouro">
+            <i class="fas fa-map-marker-alt"></i> Rua:
+        </label>
+        <input type="text" id="logradouro" name="logradouro" required><br><br>
 
-            <label for="logradouro">
-                <i class="fas fa-map-marker-alt"></i> Rua:
-            </label>
-            <input type="text" id="logradouro" name="logradouro" required><br><br>
+        <label for="bairro">
+            <i class="fas fa-home"></i> Bairro:
+        </label>
+        <input type="text" id="bairro" name="bairro" required><br><br>
 
-            <label for="bairro">
-                <i class="fas fa-home"></i> Bairro:
-            </label>
-            <input type="text" id="bairro" name="bairro" required><br><br>
+        <label for="cidade">
+            <i class="fas fa-city"></i> Cidade:
+        </label>
+        <input type="text" id="cidade" name="cidade" required><br><br>
 
-            <label for="cidade">
-                <i class="fas fa-city"></i> Cidade:
-            </label>
-            <input type="text" id="cidade" name="cidade" required><br><br>
+        <label for="estado">
+            <i class="fas fa-map"></i> Estado:
+        </label>
+        <input type="text" id="estado" name="estado" required><br><br>
 
-            <label for="estado">
-                <i class="fas fa-map"></i> Estado:
-            </label>
-            <input type="text" id="estado" name="estado" required><br><br>
+        <button type="submit">Cadastrar Endereço</button>
+    </form>
 
-            <button type="submit">Cadastrar Endereço</button>
-        </form>
-    <?php endif; ?>
-
+    <!-- Script para buscar as informações do CEP -->
     <script>
-        $('#cep').mask('00000-000'); // Máscara de CEP
-
         $('#buscar').click(function() {
-            var cep = $('#cep').val().replace(/\D/g, ''); // Remove tudo que não é número
-
+            var cep = $('#cep').val().replace(/\D/g, '');
             if (cep.length != 8) {
                 $('.message').text('CEP inválido!').addClass('error');
                 return;
             }
-
             $.ajax({
                 url: `https://viacep.com.br/ws/${cep}/json/`,
                 type: 'GET',
                 success: function(data) {
                     if (!data.erro) {
-                        // Preencher os campos com os dados retornados
                         $('#logradouro').val(data.logradouro);
                         $('#bairro').val(data.bairro);
                         $('#cidade').val(data.localidade);
@@ -169,6 +151,7 @@ if ($enderecoExiste > 0) {
             });
         });
 
+        // Carregar o tema salvo no localStorage
         $(document).ready(function() {
             var savedTheme = localStorage.getItem('theme') || 'light'; // Se não houver tema salvo, 'light' será usado
             if (savedTheme === 'dark') {
