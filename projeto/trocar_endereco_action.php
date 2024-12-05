@@ -23,6 +23,19 @@ if (empty($logradouro) || empty($bairro) || empty($cidade) || empty($estado) || 
     exit();
 }
 
+// Verificar se o CEP já está cadastrado
+$stmt = $conn->prepare("SELECT COUNT(*) FROM enderecos WHERE cep = ? AND usuario_id != ?");
+$stmt->bind_param("si", $cep, $usuario_id); // Verifica se o CEP já está associado a outro usuário
+$stmt->execute();
+$stmt->bind_result($count);
+$stmt->fetch();
+$stmt->close();
+
+if ($count > 0) {
+    echo json_encode(['success' => false, 'message' => 'O CEP informado já está cadastrado. Se deseja alterar, insira um novo CEP.']);
+    exit();
+}
+
 // Atualiza o endereço no banco de dados
 $stmt = $conn->prepare("UPDATE enderecos SET logradouro = ?, bairro = ?, cidade = ?, estado = ?, cep = ? WHERE usuario_id = ?");
 if (!$stmt) {
