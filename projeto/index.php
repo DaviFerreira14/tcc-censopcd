@@ -117,10 +117,12 @@ $conn->close();
         <input type="submit" value="Entrar">
     </form>
     <p class="cadastro-link">Não tem uma conta? <a href="cadastro.php">Cadastre-se aqui</a>.</p>
+    <p class="admin-link">Login para administrador? <a href="login_admin.php">Clique aqui</a>.</p>
     <?php if (!empty($erro_mensagem)): ?>
         <p class="erro-mensagem"><?php echo $erro_mensagem; ?></p>
     <?php endif; ?>
 </div>
+
 
 <div vw class="enabled">
     <div vw-access-button class="active"></div>
