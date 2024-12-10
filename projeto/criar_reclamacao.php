@@ -99,7 +99,7 @@ $conn->close();
         </nav>
     </header>
 
-      <nav class="sidebar">
+    <nav class="sidebar">
         <ul class="sidebarul">
             <li class="sidebarli">
                 <a href="pagina_principal.php" class="sidebar-a"><i class="fas fa-home"></i> Incío</a>
@@ -116,102 +116,137 @@ $conn->close();
         </ul>
     </nav>
 
-        <h1>Criar Reclamação</h1>
-        
-        <div class="content">
-            <div class="box">
-                <form method="POST">
-                <label for="titulo">
-                    <i class="fas fa-pencil-alt"></i> Título da Reclamação:
-                    <button type="button" class="microphone-btn" id="btn_gravar_titulo" title="Gravar Título">
-                        <i class="fas fa-microphone"></i>
-                    </button>
-                </label>
-                <input type="text" id="titulo" name="titulo" required>
-
-                <label for="cep">
-                    <i class="fas fa-mail-bulk"></i> CEP:
-                </label>
-                <input type="text" id="cep" name="cep" value="<?php echo htmlspecialchars($cep); ?>" required>
-
-                <label for="logradouro">
-                    <i class="fas fa-map-marker-alt"></i> Rua:
-                </label>
-                <input type="text" id="logradouro" name="logradouro" value="<?php echo htmlspecialchars($logradouro); ?>" required>
-
-                <label for="bairro">
-                    <i class="fas fa-home"></i> Bairro:
-                </label>
-                <input type="text" id="bairro" name="bairro" value="<?php echo htmlspecialchars($bairro); ?>" required>
-
-                <label for="cidade">
-                    <i class="fas fa-city"></i> Cidade:
-                </label>
-                <input type="text" id="cidade" name="cidade" value="<?php echo htmlspecialchars($cidade); ?>" required>
-
-                <label for="estado">
-                    <i class="fas fa-map"></i> Estado:
-                </label>
-                <input type="text" id="estado" name="estado" value="<?php echo htmlspecialchars($estado); ?>" required>
-
-                <label for="descricao">
-                    <i class="fas fa-comment-dots"></i> Descrição da Reclamação:
-                    <button type="button" class="microphone-btn" id="btn_gravar_descricao" title="Gravar Descrição">
-                        <i class="fas fa-microphone"></i>
-                    </button>
-                </label>
-                <textarea id="descricao" name="descricao" rows="4" required></textarea>
-
-                <input type="submit" value="Criar Reclamação">
-            </form>
-            </div>
-            
-        </div>
-    </div>
-
-    <div vw class="enabled">
-        <div vw-access-button class="active"></div>
-        <div vw-plugin-wrapper>
-            <div class="vw-plugin-top-wrapper"></div>
-        </div>
-    </div>
+    <h1>Criar Reclamação</h1>
     
-    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-    <script>
-        new window.VLibras.Widget('https://vlibras.gov.br/app');
-    </script>
+    <div class="content">
+        <div class="box">
+            <form method="POST">
+            <label for="titulo">
+                <i class="fas fa-pencil-alt"></i> Título da Reclamação:
+                <button type="button" class="microphone-btn" id="btn_gravar_titulo" title="Gravar Título">
+                    <i class="fas fa-microphone"></i>
+                </button>
+            </label>
+            <input type="text" id="titulo" name="titulo" required>
 
-    <script>
-        const btnGravarTitulo = document.getElementById('btn_gravar_titulo');
-        const btnGravarDescricao = document.getElementById('btn_gravar_descricao');
+            <label for="cep">
+                <i class="fas fa-mail-bulk"></i> CEP:
+            </label>
+            <input type="text" id="cep" name="cep" value="<?php echo htmlspecialchars($cep); ?>" required>
 
-        const campoTitulo = document.getElementById('titulo');
-        const campoDescricao = document.getElementById('descricao');
+            <label for="logradouro">
+                <i class="fas fa-map-marker-alt"></i> Rua:
+            </label>
+            <input type="text" id="logradouro" name="logradouro" value="<?php echo htmlspecialchars($logradouro); ?>" required>
 
-        const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-        recognition.lang = 'pt-BR';
+            <label for="bairro">
+                <i class="fas fa-home"></i> Bairro:
+            </label>
+            <input type="text" id="bairro" name="bairro" value="<?php echo htmlspecialchars($bairro); ?>" required>
 
-        function startRecognition(field, button) {
-            recognition.start();
-            button.classList.add('recording'); // Muda a cor para vermelho
-            button.classList.remove('not-recording'); // Remove a cor verde
+            <label for="cidade">
+                <i class="fas fa-city"></i> Cidade:
+            </label>
+            <input type="text" id="cidade" name="cidade" value="<?php echo htmlspecialchars($cidade); ?>" required>
 
-            recognition.onresult = (event) => {
-                const transcript = event.results[0][0].transcript;
-                field.value = transcript; // Preenche o campo correspondente com o texto transcrito
-            };
+            <label for="estado">
+                <i class="fas fa-map"></i> Estado:
+            </label>
+            <input type="text" id="estado" name="estado" value="<?php echo htmlspecialchars($estado); ?>" required>
 
-            recognition.onerror = (event) => {
-                console.error('Erro na gravação: ' + event.error);
-            };
+            <label for="descricao">
+                <i class="fas fa-comment-dots"></i> Descrição da Reclamação:
+                <button type="button" class="microphone-btn" id="btn_gravar_descricao" title="Gravar Descrição">
+                    <i class="fas fa-microphone"></i>
+                </button>
+            </label>
+            <textarea id="descricao" name="descricao" rows="4" required></textarea>
 
-            recognition.onend = () => {
-                button.classList.remove('recording'); // Volta a cor para verde
-            };
+            <input type="submit" value="Criar Reclamação">
+        </form>
+        </div>
+        
+    </div>
+</div>
+
+<div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+    </div>
+</div>
+
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
+
+<script>
+    const btnGravarTitulo = document.getElementById('btn_gravar_titulo');
+    const btnGravarDescricao = document.getElementById('btn_gravar_descricao');
+
+    const campoTitulo = document.getElementById('titulo');
+    const campoDescricao = document.getElementById('descricao');
+
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    recognition.lang = 'pt-BR';
+
+    function startRecognition(field, button) {
+        recognition.start();
+        button.classList.add('recording'); // Muda a cor para vermelho
+        button.classList.remove('not-recording'); // Remove a cor verde
+
+        recognition.onresult = (event) => {
+            const transcript = event.results[0][0].transcript;
+            field.value = transcript; // Preenche o campo correspondente com o texto transcrito
+        };
+
+        recognition.onerror = (event) => {
+            console.error('Erro na gravação: ' + event.error);
+        };
+
+        recognition.onend = () => {
+            button.classList.remove('recording'); // Volta a cor para verde
+        };
+    }
+
+    btnGravarTitulo.onclick = () => startRecognition(campoTitulo, btnGravarTitulo);
+    btnGravarDescricao.onclick = () => startRecognition(campoDescricao, btnGravarDescricao);
+</script>
+
+<script>
+    // Função para buscar o endereço automaticamente via CEP
+    function buscarEndereco() {
+        const cep = document.getElementById('cep').value.replace(/\D/g, ''); // Remove qualquer caractere não numérico
+
+        // Verifica se o CEP tem 8 dígitos
+        if (cep.length === 8) {
+            // Faz a requisição à API ViaCEP
+            const url = `https://viacep.com.br/ws/${cep}/json/`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    // Verifica se a API retornou um erro
+                    if (data.erro) {
+                        alert('CEP não encontrado.');
+                    } else {
+                        // Preenche os campos com as informações do endereço
+                        document.getElementById('logradouro').value = data.logradouro;
+                        document.getElementById('bairro').value = data.bairro;
+                        document.getElementById('cidade').value = data.localidade;
+                        document.getElementById('estado').value = data.uf;
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar o endereço: ', error);
+                });
         }
+    }
 
-        btnGravarTitulo.onclick = () => startRecognition(campoTitulo, btnGravarTitulo);
-        btnGravarDescricao.onclick = () => startRecognition(campoDescricao, btnGravarDescricao);
-    </script>
+    // Adiciona um evento para chamar a função quando o campo de CEP for alterado
+    document.getElementById('cep').addEventListener('blur', buscarEndereco); // Quando o campo perde o foco
+</script>
+
 </body>
 </html>
